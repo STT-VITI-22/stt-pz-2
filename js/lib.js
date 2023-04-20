@@ -1,3 +1,8 @@
+function sum(a,b) {
+  return a+b;
+}
+
+
 /**
  * This function must subtraction two numbers and return result of subtraction
  * @param a {number|string}
@@ -5,7 +10,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return a-b;
 }
 
 /**
@@ -15,7 +20,7 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  return a/b;
 }
 
 /**
@@ -25,7 +30,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return a*b;
 }
 
 /**
@@ -35,7 +40,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (value * percent)/100;
 }
 
 /**
@@ -44,7 +49,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(number);
 }
 
 /**
@@ -53,16 +58,16 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
- * This function get get Max number from array
+ * This function get Max number from array
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers)
 }
 
 /**
@@ -71,7 +76,10 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  const mas = [max,min]
+  return mas;
 }
 
 /**
@@ -80,7 +88,8 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+  return sum / numbers.length;
 }
 
 /**
@@ -89,7 +98,16 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = 'aeiouAEIOU';
+  let result = '';
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (vowels.includes(char)) {
+      result += char
+    }
+  }
+  return result;
 }
 
 /**
@@ -98,7 +116,11 @@ function getVowels(str) {
  * @returns {string}
  */
 function cancatString() {
-  // Write your code here
+  let result = '';
+  for (let i = 0; i < arguments.length; i++) {
+    result += arguments[i];
+  }
+  return result;
 }
 
 /**
@@ -109,7 +131,23 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  if (divider === '') {
+    return Array.from(str);
+  }
+  const result = [];
+  let startIndex = 0;
+
+  while (true) {
+    const endIndex = str.indexOf(divider, startIndex);
+    if (endIndex === -1) {
+      result.push(str.substring(startIndex));
+      break;
+    } else {
+      result.push(str.substring(startIndex, endIndex));
+      startIndex = endIndex + divider.length;
+    }
+  }
+  return result;
 }
 
 /**
@@ -119,7 +157,12 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  for (let i = 0; i < str.length; i++) {
+    if (str.substring(i, i + subStr.length) === subStr) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -128,7 +171,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char >= 'a' && char <= 'z';
 }
 
 module.exports = {
