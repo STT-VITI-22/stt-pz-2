@@ -121,6 +121,7 @@ function getVowels(str) {
   return result;
 }
 
+
 /**
  * This function get array of string and concat them into one string
  * @param str {string[]}
