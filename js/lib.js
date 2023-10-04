@@ -6,6 +6,7 @@
  */
 function subtraction(a, b) {
   // Write your code here
+	return Number(a) - Number(b)
 }
 
 /**
@@ -16,6 +17,7 @@ function subtraction(a, b) {
  */
 function division(a, b) {
   // Write your code here
+	return Number(a) / Number(b)
 }
 
 /**
@@ -26,6 +28,7 @@ function division(a, b) {
  */
 function multiplication(a, b) {
   // Write your code here
+	return Number(a) * Number(b)
 }
 
 /**
@@ -36,6 +39,7 @@ function multiplication(a, b) {
  */
 function percentage(value, percent) {
   // Write your code here
+	return Number(value) * Number(percent) / 100
 }
 
 /**
@@ -45,6 +49,7 @@ function percentage(value, percent) {
  */
 function getWholeNumberPart(number) {
   // Write your code here
+return Math.floor(numbers)
 }
 
 /**
@@ -54,6 +59,9 @@ function getWholeNumberPart(number) {
  */
 function getEvenNumbers(numbers) {
   // Write your code here
+	var result = numbers.filter(x => x % 2 == 0)
+	return result;
+	
 }
 
 /**
@@ -63,6 +71,7 @@ function getEvenNumbers(numbers) {
  */
 function getMaxNumber(numbers) {
   // Write your code here
+	return Math.max(numbers)
 }
 
 /**
@@ -72,6 +81,7 @@ function getMaxNumber(numbers) {
  */
 function getMinAndMaxNumbers(numbers) {
   // Write your code here
+	return Math.max(numbers), Math.min(numbers)
 }
 
 /**
@@ -81,6 +91,12 @@ function getMinAndMaxNumbers(numbers) {
  */
 function arithmeticMeans(numbers) {
   // Write your code here
+	let count = numbers.length;
+	let sum = 0;
+	for (let i = 0; i < count; i++ ) {
+  	sum += numbers[i];
+	}
+	return sum/count; 
 }
 
 /**
@@ -90,6 +106,32 @@ function arithmeticMeans(numbers) {
  */
 function getVowels(str) {
   // Write your code here
+	let count = str.length;
+	let strArr = str.split("");
+	let strArr2 = [];
+	for (let i = 0; i < count; i++ ) {
+  	if(str[i] == "a"){
+      strArr2 += str[i];
+    
+    }
+    if(str[i] == "e"){
+      strArr2 += str[i];
+    
+    }
+    if(str[i] == "u"){
+      strArr2 += str[i];
+    
+    }
+    if(str[i] == "i"){
+      strArr2 += str[i];
+    
+    }
+    if(str[i] == "o"){
+      strArr2 += str[i];
+    
+    }
+}
+return strArr2;
 }
 
 /**
@@ -97,8 +139,15 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
+function cancatString(str) {
   // Write your code here
+	let count = str.length;
+	let strArr2 = "";
+	for (let i = 0; i < count; i++ ) {
+     strArr2 += str[i]
+	}
+ 
+	return strArr2
 }
 
 /**
@@ -110,6 +159,8 @@ function cancatString() {
 
 function splitString(str, divider) {
   // Write your code here
+	let arr = str.split(divider);
+	return arr;
 }
 
 /**
@@ -120,6 +171,7 @@ function splitString(str, divider) {
  */
 function hasSubString(str, subStr) {
   // Write your code here
+	return str.includes(subStr);
 }
 
 /**
@@ -129,6 +181,12 @@ function hasSubString(str, subStr) {
  */
 function isLowerCase(char) {
   // Write your code here
+if(char == char.toLowerCase()){
+  return true;
+}
+if(char == char.toUpperCase()){
+  return false;
+}
 }
 
 module.exports = {
