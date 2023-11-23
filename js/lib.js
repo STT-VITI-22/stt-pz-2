@@ -5,7 +5,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b)
 }
 
 /**
@@ -15,7 +15,10 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (b === 0) {
+    return NaN;
+  }
+  return Number(a) / Number(b);
 }
 
 /**
@@ -25,7 +28,10 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  if (b === 0) {
+    return NaN;
+  }
+  return Number(a) * Number(b)
 }
 
 /**
@@ -35,7 +41,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (Number(value) * Number(percent)) / 100;
 }
 
 /**
@@ -44,7 +50,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.floor(Number(number));
 }
 
 /**
@@ -53,7 +59,13 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  var evenNumbers = [];
+  for (var i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evenNumbers.push(numbers[i]);
+    }
+  }
+  return evenNumbers;
 }
 
 /**
@@ -62,7 +74,17 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  var minNumber = numbers[0];
+  var maxNumber = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < minNumber) {
+      minNumber = numbers[i];
+    }
+    if (numbers[i] > maxNumber) {
+      maxNumber = numbers[i];
+    }
+  }
+  return { min: minNumber, max: maxNumber };
 }
 
 /**
@@ -71,7 +93,17 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  var minNumber = numbers[0];
+  var maxNumber = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < minNumber) {
+      minNumber = numbers[i];
+    }
+    if (numbers[i] > maxNumber) {
+      maxNumber = numbers[i];
+    }
+  }
+  return { min: minNumber, max: maxNumber };
 }
 
 /**
@@ -80,7 +112,12 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  var sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  var mean = sum / numbers.length;
+  return mean;
 }
 
 /**
@@ -89,7 +126,14 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
+  var result = [];
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i].toLowerCase())) {
+      result.push(str[i]);
+    }
+  }
+  return result;
 }
 
 /**
@@ -98,7 +142,7 @@ function getVowels(str) {
  * @returns {string}
  */
 function cancatString() {
-  // Write your code here
+  return str.join('')
 }
 
 /**
@@ -109,7 +153,7 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +163,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +172,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && /[a-z]/.test(char);
 }
 
 module.exports = {
