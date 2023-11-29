@@ -5,7 +5,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return a - b;
 }
 
 /**
@@ -15,7 +15,10 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (b === 0) {
+    throw new Error("Divison on zero is impossible");
+  }
+  return a / b;
 }
 
 /**
@@ -25,7 +28,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return a * b;
 }
 
 /**
@@ -35,7 +38,18 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  const numericValue = parseFloat(value);
+  const numericPercent = parseFloat(percent);
+
+  if (isNaN(numericValue) || isNaN(numericPercent)) {
+    throw new Error(
+      "Input data must be numbers or strings that represent numbers."
+    );
+  }
+
+  const result = (numericPercent / 100) * numericValue;
+
+  return result;
 }
 
 /**
@@ -44,7 +58,18 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  const numericValue = parseFloat(number);
+
+  if (isNaN(numericValue)) {
+    throw new Error(
+      "Input data must be numbers or strings representing numbers."
+    );
+  }
+
+  // Отримання цілої частини числа
+  const result = Math.floor(numericValue);
+
+  return result;
 }
 
 /**
@@ -53,7 +78,14 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error("The input data must be an array of natural numbers.");
+  }
+
+  // Фільтрація парних чисел
+  const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+  return evenNumbers;
 }
 
 /**
@@ -62,7 +94,14 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Input data must be a non-empty array of numbers.");
+  }
+
+  // Знаходження максимального числа
+  const maxNumber = Math.max(...numbers);
+
+  return maxNumber;
 }
 
 /**
@@ -71,7 +110,15 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Input data must be a non-empty array of numbers.");
+  }
+
+  // Знаходження мінімального та максимального чисел
+  const minNumber = Math.min(...numbers);
+  const maxNumber = Math.max(...numbers);
+
+  return { min: minNumber, max: maxNumber };
 }
 
 /**
@@ -80,7 +127,15 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Input data must be a non-empty array of numbers.");
+  }
+
+  // Обчислення середнього арифметичного
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  const mean = sum / numbers.length;
+
+  return mean;
 }
 
 /**
@@ -89,7 +144,14 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  if (typeof str !== "string") {
+    throw new Error("Input data must be a string.");
+  }
+
+  // Вибір голосних літер з рядка
+  const vowels = str.toLowerCase().match(/[aeiou]/g) || [];
+
+  return vowels;
 }
 
 /**
@@ -98,7 +160,14 @@ function getVowels(str) {
  * @returns {string}
  */
 function cancatString() {
-  // Write your code here
+  if (!Array.isArray(strings) || strings.length === 0) {
+    throw new Error("Input data must be a non-empty array of strings.");
+  }
+
+  // Об'єднання рядків у один рядок
+  const result = strings.join("");
+
+  return result;
 }
 
 /**
@@ -109,7 +178,14 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  if (typeof str !== "string" || typeof divider !== "string") {
+    throw new Error("Input data must be strings.");
+  }
+
+  // Розбиття рядка за роздільником
+  const result = str.split(divider);
+
+  return result;
 }
 
 /**
@@ -119,7 +195,14 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  if (typeof str !== "string" || typeof subStr !== "string") {
+    throw new Error("Input data must be strings.");
+  }
+
+  // Перевірка, чи містить рядок підрядок
+  const result = str.includes(subStr);
+
+  return result;
 }
 
 /**
@@ -128,11 +211,17 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  if (typeof char !== "string" || char.length !== 1) {
+    throw new Error("Input data must be a single character string.");
+  }
+
+  // Перевірка, чи є символ у нижньому регістрі
+  const result = char === char.toLowerCase();
+
+  return result;
 }
 
 module.exports = {
-  sum,
   subtraction,
   division,
   multiplication,
@@ -146,5 +235,5 @@ module.exports = {
   cancatString,
   splitString,
   hasSubString,
-  isLowerCase
-}
+  isLowerCase,
+};
