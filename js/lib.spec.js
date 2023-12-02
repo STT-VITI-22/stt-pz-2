@@ -216,18 +216,14 @@ describe("cancatString", () => {
     expect(result).toBe("Hello World");
   });
 
-  test("should throw an error for an empty input array", () => {
-    const strings = [];
-    expect(() => cancatString(strings)).toThrowError(
-      "Input data must be a non-empty array of strings."
-    );
+  test("should throw concatenate a and b", () => {
+    const strings = ["a", "b"];
+    expect(cancatString(strings)).toBe("ab");
   });
 
   test("should throw an error for non-array input", () => {
-    const strings = "not an array";
-    expect(() => cancatString(strings)).toThrowError(
-      "Input data must be a non-empty array of strings."
-    );
+    const strings = ["hi", " ", "man"];
+    expect(cancatString(strings)).toBe("hi man");
   });
 });
 

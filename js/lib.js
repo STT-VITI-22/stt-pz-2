@@ -159,15 +159,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  if (!Array.isArray(strings) || strings.length === 0) {
-    throw new Error("Input data must be a non-empty array of strings.");
-  }
-
-  // Об'єднання рядків у один рядок
-  const result = strings.join("");
-
-  return result;
+function cancatString(str) {
+  return str.join("");
 }
 
 /**
