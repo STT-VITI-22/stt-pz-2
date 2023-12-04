@@ -4,10 +4,15 @@
  * @param b {number|string}
  * @returns {number}
  */
-function subtraction(a, b) {
-  // Write your code here
+function sum(a, b) {
+  return Number(a) + Number(b)
 }
-
+function subtraction(a, b) {
+  if (isNaN(a) || isNaN(b)) {
+    throw new Error('Invalid input');
+  }
+  return Number(a) - Number(b);
+}
 /**
  * This function must division two numbers and return result according to all arithmetic rules
  * @param a {number|string}
@@ -15,7 +20,13 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (isNaN(a) || isNaN(b)) {
+    throw new Error('Invalid input');
+  }
+  if (b === 0) {
+    throw new Error('Division by zero');
+  }
+  return Number(a) / Number(b);
 }
 
 /**
@@ -25,7 +36,10 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  if (isNaN(a) || isNaN(b)) {
+    throw new Error('Invalid input');
+  }
+  return Number(a) * Number(b);
 }
 
 /**
@@ -35,16 +49,21 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  if (isNaN(value) || isNaN(percent)) {
+    throw new Error('Invalid input');
+  }
+  return (Number(value) * Number(percent)) / 100;
 }
-
 /**
  * This function return whole part of number
  * @param number {number|string}
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  if (isNaN(number)) {
+    throw new Error('Invalid input');
+  }
+  return Math.trunc(Number(number));
 }
 
 /**
@@ -53,16 +72,31 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error('Input must be an array');
+  }
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
- * This function get get Max number from array
+ * This function get Max number from array
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error('Invalid input');
+  }
+  if (numbers.length === 0) {
+    throw new Error('Input must be a non-empty array');
+  }
+  var maxNumber = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > maxNumber) {
+      maxNumber = numbers[i];
+    }
+  }
+  return maxNumber;
 }
 
 /**
@@ -71,16 +105,37 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error('Invalid input');
+  }
+  if (numbers.length === 0) {
+    throw new Error('Input must be a non-empty array');
+  }
+  var minNumber = numbers[0];
+  var maxNumber = numbers[0];
+  for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] < minNumber) {
+      minNumber = numbers[i];
+    }
+    if (numbers[i] > maxNumber) {
+      maxNumber = numbers[i];
+    }
+  }
+  return { min: minNumber, max: maxNumber };
 }
-
 /**
  * This function calculate arithmetic means from array of numbers
  * @param numbers {number[]}
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error('Invalid input');
+  }
+  if (numbers.length === 0) {
+    return NaN;
+  }
+  return numbers.reduce((sum, number) => sum + number, 0) / numbers.length;
 }
 
 /**
@@ -89,7 +144,10 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  if (typeof str !== 'string') {
+    throw new Error('Invalid input');
+  }
+  return str.match(/[aeiou]/gi) || [];
 }
 
 /**
@@ -97,8 +155,11 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(strArr) {
+  if (!Array.isArray(strArr)) {
+    throw new Error('Invalid input');
+  }
+  return strArr.join('');
 }
 
 /**
@@ -109,7 +170,10 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  if (typeof str !== 'string' || typeof divider !== 'string') {
+    throw new Error('Invalid input');
+  }
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +183,10 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  if (typeof str !== 'string' || typeof subStr !== 'string') {
+    throw new Error('Invalid input');
+  }
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +195,10 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  if (typeof char !== 'string' || char.length !== 1) {
+    throw new Error('Input must be a single character');
+  }
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
