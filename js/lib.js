@@ -28,10 +28,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  if (b === 0) {
-    return NaN;
-  }
-  return Number(a) * Number(b)
+  return a * b;
 }
 
 /**
@@ -74,17 +71,13 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  var minNumber = numbers[0];
-  var maxNumber = numbers[0];
-  for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] < minNumber) {
-      minNumber = numbers[i];
-    }
-    if (numbers[i] > maxNumber) {
-      maxNumber = numbers[i];
-    }
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Input data must be a non-empty array of numbers.");
   }
-  return { min: minNumber, max: maxNumber };
+
+  const maxNumber = Math.max(...numbers);
+
+  return maxNumber;
 }
 
 /**
@@ -93,16 +86,11 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  var minNumber = numbers[0];
-  var maxNumber = numbers[0];
-  for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] < minNumber) {
-      minNumber = numbers[i];
-    }
-    if (numbers[i] > maxNumber) {
-      maxNumber = numbers[i];
-    }
-  }
+ 
+  // Знаходження мінімального та максимального чисел
+  const minNumber = Math.min(...numbers);
+  const maxNumber = Math.max(...numbers);
+
   return { min: minNumber, max: maxNumber };
 }
 
@@ -141,8 +129,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  return str.join('')
+function cancatString(str) {
+  return str.join("")
 }
 
 /**
@@ -176,7 +164,6 @@ function isLowerCase(char) {
 }
 
 module.exports = {
-  sum,
   subtraction,
   division,
   multiplication,

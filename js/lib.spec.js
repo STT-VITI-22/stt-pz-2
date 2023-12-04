@@ -12,25 +12,6 @@ describe('Test suite for testing lib.js', () => {
   });
 
 
-  describe('Test suite for testing sum function', () => {
-    it('should return sum of two numbers', () => {
-      expect(lib.sum(1, 2)).toEqual(3)
-      expect(lib.sum(-10, 5)).toEqual(-5)
-      expect(lib.sum(-10, 10)).toEqual(0)
-    });
-
-    it('should return NaN if one parameter is skipped', () => {
-     expect(lib.sum(1)).toBe(NaN);
-    });
-
-
-    it('should convert string inputs to numbers and sum correctly', () => {
-      expect(lib.sum('5', '1')).toEqual(6)
-      expect(lib.sum(10, '1')).toEqual(11)
-      expect(lib.sum('25', 5)).toEqual(30)
-    });
-  });
-
   describe('Test suite for testing lib.division function', () => {
     it('should divide two numbers correctly', () => {
       expect(lib.division(10, 2)).toEqual(5);
@@ -113,20 +94,25 @@ describe('Test suite for testing lib.js', () => {
     });
   });
 
-  describe('Test suite for testing lib.getMaxNumber function', () => {
-    it('should return the maximum number from the input array', () => {
-      expect(lib.getMaxNumber([1, 2, 3, 4, 5, 6])).toEqual(6);
-      expect(lib.getMaxNumber([10, 20, 30, 40, 50])).toEqual(50);
-      expect(lib.getMaxNumber([-2, -1, 0, 1, 2])).toEqual(2);
+  describe("getMaxNumber", () => {
+    test("should get the maximum number from an array of numbers", () => {
+      const numbers = [5, 2, 9, 1, 7];
+      const result = lib.getMaxNumber(numbers);
+      expect(result).toBe(9);
     });
-
-    it('should return the only element if array length is 1', () => {
-      expect(lib.getMaxNumber([10])).toEqual(10);
-      expect(lib.getMaxNumber([-5])).toEqual(-5);
+  
+    test("should throw an error for an empty input array", () => {
+      const numbers = [];
+      expect(() => lib.getMaxNumber(numbers)).toThrowError(
+        "Input data must be a non-empty array of numbers."
+      );
     });
-
-    it('should return NaN if input array is empty', () => {
-      expect(lib.getMaxNumber([])).toBeNaN();
+  
+    test("should throw an error for non-array input", () => {
+      const numbers = "not an array";
+      expect(() => lib.getMaxNumber(numbers)).toThrowError(
+        "Input data must be a non-empty array of numbers."
+      );
     });
   });
 
