@@ -1,230 +1,318 @@
-const lib = require('./lib');
-
-describe('Test suite for testing lib.js', () => {
-  describe('Test suite for testing subtraction function', () => {
-    it('should return subtraction of two numbers', () => {
-      expect(lib.subtraction(5, 1)).toEqual(4);
-    });
-
-    it('should convert string inputs to numbers and substract correctly', () => {
-      expect(lib.subtraction('20', '5')).toEqual(15);
-    });
-  });
-
-
-  describe('Test suite for testing sum function', () => {
-    it('should return sum of two numbers', () => {
-      expect(lib.sum(1, 2)).toEqual(3)
-      expect(lib.sum(-10, 5)).toEqual(-5)
-      expect(lib.sum(-10, 10)).toEqual(0)
-    });
-
-    it('should return NaN if one parameter is skipped', () => {
-     expect(lib.sum(1)).toBe(NaN);
-    });
+const librarry = require("./lib");
+const {
+  calculateSubtraction,
+  calculateDivision,
+  calculateMultiplication,
+  calculatePercentage,
+  getWholePart,
+  filterEvenNumbers,
+  findMaxNumber,
+  findMinMaxNumbers,
+  calculateArithmeticMean,
+  extractVowels,
+  concatenateStrings,
+  splitString,
+  containsSubstring,
+  isCharLowerCase,
+} = require("./lib");
 
 
-    it('should convert string inputs to numbers and sum correctly', () => {
-      expect(lib.sum('5', '1')).toEqual(6)
-      expect(lib.sum(10, '1')).toEqual(11)
-      expect(lib.sum('25', 5)).toEqual(30)
+
+
+
+describe("Test suite for testing lib.js", () => {
+  describe("Test suite for testing calculateSubtraction function", () => {
+    it("should return calculateSubtraction of two numbers", () => {
+      expect(librarry.calculateSubtraction(5, 1)).toEqual(4);
     });
   });
+});
 
-  describe('Test suite for testing lib.division function', () => {
-    it('should divide two numbers correctly', () => {
-      expect(lib.division(10, 2)).toEqual(5);
-    });
+describe("calculateDivision", () => {
+  test("should divide two numbers", () => {
+    const a = 6;
+    const b = 2;
+    const result = calculateDivision(a, b);
+    expect(result).toBe(3);
+  });
+  test("should handle calculateDivision by zero", () => {
+    const a = 8;
+    const b = 0;
+    expect(() => calculateDivision(a, b)).toThrowError("Divison on zero is impossible");
+  });
+});
 
-    it('should return NaN when dividing by zero', () => {
-      expect(lib.division(10, 0)).toBe(NaN);
-    });
+describe("calculateSubtraction", () => {
+  test("should subtract two numbers", () => {
+    const a = 5;
+    const b = 3;
+    const result = calculateSubtraction(a, b);
+    expect(result).toBe(2);
+  });
+});
 
-    it('should convert string inputs to numbers and divide correctly', () => {
-      expect(lib.division('20', '5')).toEqual(4);
-    });
+describe("calculateMultiplication", () => {
+  test("should multiply two numbers", () => {
+    const a = 4;
+    const b = 3;
+    const result = calculateMultiplication(a, b);
+    expect(result).toBe(12);
+  });
+});
+
+describe("getWholePart", () => {
+  test("should get whole number part for numbers", () => {
+    const number = 7.89;
+    const result = getWholePart(number);
+    expect(result).toBe(7);
   });
 
-  describe('Test suite for testing lib.multiplication function', () => {
-    it('should multiply two numbers correctly', () => {
-      expect(lib.multiplication(10, 2)).toEqual(20);
-    });
-
-    it('should convert string inputs to numbers and multiply correctly', () => {
-      expect(lib.multiplication('20', '5')).toEqual(100);
-    });
-  });
-  describe('Test suite for testing lib.percentage function', () => {
-    it('should calculate the lib.percentage correctly', () => {
-      expect(lib.percentage(50, 20)).toEqual(10);
-    });
-
-    it('should convert string inputs to numbers and calculate the lib.percentage correctly', () => {
-      expect(lib.percentage('40', '25')).toEqual(10);
-    });
-
-    it('should handle negative numbers correctly', () => {
-      expect(lib.percentage(-50, 20)).toEqual(-10);
-    });
-
-    it('should handle zero input correctly', () => {
-      expect(lib.percentage(0, 20)).toEqual(0);
-    });
-
-    it('should handle zero lib.percentage correctly', () => {
-      expect(lib.percentage(50, 0)).toEqual(0);
-    });
+  test("should get whole number part for strings representing numbers", () => {
+    const number = "15.75";
+    const result = getWholePart(number);
+    expect(result).toBe(15);
   });
 
-  describe('Test suite for testing lib.getWholeNumberPart function', () => {
-    it('should return the whole number part correctly', () => {
-      expect(lib.getWholeNumberPart(10.9)).toEqual(10);
-      expect(lib.getWholeNumberPart(5.5)).toEqual(5);
-      expect(lib.getWholeNumberPart(100)).toEqual(100);
-    });
+  test("should throw an error for non-numeric input", () => {
+    const number = "abc";
+    expect(() => getWholePart(number)).toThrowError(
+      "Input data must be numbers or strings representing numbers."
+    );
+  });
+});
 
-    it('should return NaN for non-numeric inputs', () => {
-      expect(lib.getWholeNumberPart('abc')).toBeNaN();
-      expect(lib.getWholeNumberPart(undefined)).toBeNaN();
-    });
-
-    it('should handle negative numbers correctly', () => {
-      expect(lib.getWholeNumberPart(-10.9)).toEqual(-11);
-      expect(lib.getWholeNumberPart(-5.5)).toEqual(-6);
-      expect(lib.getWholeNumberPart(-100)).toEqual(-100);
-    });
-
-    it('should handle zero input correctly', () => {
-      expect(lib.getWholeNumberPart(0)).toEqual(0);
-    });
+describe("filterEvenNumbers", () => {
+  test("should get even numbers from an array of natural numbers", () => {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const result = filterEvenNumbers(numbers);
+    expect(result).toEqual([2, 4, 6, 8, 10]);
   });
 
-  describe('Test suite for testing lib.getEvenNumbers function', () => {
-    it('should return only even numbers from the input array', () => {
-      expect(lib.getEvenNumbers([1, 2, 3, 4, 5, 6])).toEqual([2, 4, 6]);
-      expect(lib.getEvenNumbers([10, 20, 30, 40, 50])).toEqual([10, 20, 30, 40, 50]);
-      expect(lib.getEvenNumbers([-2, -1, 0, 1, 2])).toEqual([-2, 0, 2]);
-    });
-
-    it('should return an empty array if no even numbers are found', () => {
-      expect(lib.getEvenNumbers([1, 3, 5, 7])).toEqual([]);
-      expect(lib.getEvenNumbers([-1, 3, 5])).toEqual([]);
-      expect(lib.getEvenNumbers([])).toEqual([]);
-    });
+  test("should return an empty array for an empty input array", () => {
+    const numbers = [];
+    const result = filterEvenNumbers(numbers);
+    expect(result).toEqual([]);
   });
 
-  describe('Test suite for testing lib.getMaxNumber function', () => {
-    it('should return the maximum number from the input array', () => {
-      expect(lib.getMaxNumber([1, 2, 3, 4, 5, 6])).toEqual(6);
-      expect(lib.getMaxNumber([10, 20, 30, 40, 50])).toEqual(50);
-      expect(lib.getMaxNumber([-2, -1, 0, 1, 2])).toEqual(2);
-    });
+  test("should throw an error for non-array input", () => {
+    const numbers = "not an array";
+    expect(() => filterEvenNumbers(numbers)).toThrowError(
+      "The input data must be an array of natural numbers."
+    );
+  });
+});
 
-    it('should return the only element if array length is 1', () => {
-      expect(lib.getMaxNumber([10])).toEqual(10);
-      expect(lib.getMaxNumber([-5])).toEqual(-5);
-    });
-
-    it('should return NaN if input array is empty', () => {
-      expect(lib.getMaxNumber([])).toBeNaN();
-    });
+describe("calculatePercentage", () => {
+  test("should calculate calculatePercentage for numbers", () => {
+    const value = 200;
+    const percent = 20;
+    const result = calculatePercentage(value, percent);
+    expect(result).toBe(40);
   });
 
-  describe('Test suite for testing getMinAndMaxNumbers function', () => {
-    it('should return the min and max numbers from the input array', () => {
-      expect(lib.getMinAndMaxNumbers([5, 2, 8, 1, 9])).toEqual({ min: 1, max: 9 });
-      expect(lib.getMinAndMaxNumbers([0, -10, 10, 2])).toEqual({ min: -10, max: 10 });
-      expect(lib.getMinAndMaxNumbers([1])).toEqual({ min: 1, max: 1 });
-      expect(lib.getMinAndMaxNumbers([-5, -2, -8, -1, -9])).toEqual({ min: -9, max: -1 });
-    });
+  test("should calculate calculatePercentage for strings representing numbers", () => {
+    const value = "150";
+    const percent = "10";
+    const result = calculatePercentage(value, percent);
+    expect(result).toBe(15);
   });
 
-  describe('Test suite for testing lib.arithmeticMeans function', () => {
-    it('should return the correct arithmetic mean for an array of numbers', () => {
-      expect(lib.arithmeticMeans([1, 2, 3, 4, 5])).toEqual(3);
-      expect(lib.arithmeticMeans([10, 20, 30, 40])).toEqual(25);
-      expect(lib.arithmeticMeans([-1, 0, 1])).toEqual(0);
-    });
+  test("should throw an error for non-numeric input", () => {
+    const value = "abc";
+    const percent = "10";
+    expect(() => calculatePercentage(value, percent)).toThrowError(
+      "Input data must be numbers or strings that represent numbers."
+    );
+  });
+});
 
-    it('should return NaN if input array is empty', () => {
-      expect(lib.arithmeticMeans([])).toBeNaN();
-    });
+
+
+describe("findMinMaxNumbers", () => {
+  test("should get min and max numbers from an array of numbers", () => {
+    const numbers = [5, 2, 9, 1, 7];
+    const result = findMinMaxNumbers(numbers);
+    expect(result).toEqual({ min: 1, max: 9 });
   });
 
-  describe('Test suite for testing lib.getVowels function', () => {
-    it('returns an empty array for an empty string', () => {
-      expect(lib.getVowels('')).toEqual([]);
-    });
-
-    it('returns an empty array when there are no vowels in the string', () => {
-      expect(lib.getVowels('rhythm')).toEqual([]);
-    });
-
-    it('returns an array containing only the vowels in the string', () => {
-      expect(lib.getVowels('hello world')).toEqual(['e', 'o', 'o']);
-    });
-
-    it('returns an array containing uppercase and lowercase vowels', () => {
-      expect(lib.getVowels('AEIOUaeiou')).toEqual(['A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u']);
-    });
-
-    it('ignores non-alphabetic characters', () => {
-      expect(lib.getVowels('He11o, w0rld!')).toEqual(['e', 'o']);
-    });
+  test("should throw an error for an empty input array", () => {
+    // Arrange
+    const numbers = [];
+    expect(() => findMinMaxNumbers(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
   });
 
-  describe('Test suite for lib.cancatString function', () => {
-    it('should concatenate an array of strings', () => {
-      expect(lib.cancatString(['Hello', 'World'])).toEqual('HelloWorld');
-      expect(lib.cancatString(['a', 'b', 'c'])).toEqual('abc');
-      expect(lib.cancatString(['Lorem', 'ipsum', 'dolor', 'sit', 'amet'])).toEqual('Loremipsumdolorsitamet');
-    });
+  test("should throw an error for non-array input", () => {
+    // Arrange
+    const numbers = "not an array";
+    expect(() => findMinMaxNumbers(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
+  });
+});
+
+describe("calculateArithmeticMean", () => {
+  test("should calculate the arithmetic mean from an array of numbers", () => {
+    const numbers = [5, 2, 9, 1, 7];
+    const result = calculateArithmeticMean(numbers);
+    expect(result).toBe(4.8);
   });
 
-  describe('Test suite for lib.splitString function', () => {
-    it('should split the string using the divider', () => {
-      expect(lib.splitString('hello world', ' ')).toEqual(['hello', 'world']);
-      expect(lib.splitString('1,2,3,4', ',')).toEqual(['1', '2', '3', '4']);
-      expect(lib.splitString('apple|banana|cherry', '|')).toEqual(['apple', 'banana', 'cherry']);
-    });
-
-    it('should return an array with one element if no divider is found', () => {
-      expect(lib.splitString('hello world', '-')).toEqual(['hello world']);
-      expect(lib.splitString('abcdefg', '+')).toEqual(['abcdefg']);
-    });
+  test("should throw an error for an empty input array", () => {
+    const numbers = [];
+    expect(() => calculateArithmeticMean(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
   });
 
-  describe('Test suite for lib.hasSubString function', () => {
-    it('should return true if the string contains the substring', () => {
-      expect(lib.hasSubString('hello world', 'world')).toBe(true);
-    });
+  test("should throw an error for non-array input", () => {
+    const numbers = "not an array";
+    expect(() => calculateArithmeticMean(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
+  });
+});
 
-    it('should return false if the string does not contain the substring', () => {
-      expect(lib.hasSubString('hello world', 'foo')).toBe(false);
-    });
-
-    it('should return true if the string and substring are identical', () => {
-      expect(lib.hasSubString('hello', 'hello')).toBe(true);
-    });
+describe("findMaxNumber", () => {
+  test("should get the maximum number from an array of numbers", () => {
+    const numbers = [5, 2, 9, 1, 7];
+    const result = findMaxNumber(numbers);
+    expect(result).toBe(9);
   });
 
-  describe('Test suite for lib.isLowerCase function', () => {
-    it('should return true for lowercase letters', () => {
-      expect(lib.isLowerCase('a')).toBe(true);
-      expect(lib.isLowerCase('e')).toBe(true);
-      expect(lib.isLowerCase('z')).toBe(true);
-    });
+  test("should throw an error for an empty input array", () => {
+    const numbers = [];
+    expect(() => findMaxNumber(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
+  });
 
-    it('should return false for uppercase letters', () => {
-      expect(lib.isLowerCase('A')).toBe(false);
-      expect(lib.isLowerCase('E')).toBe(false);
-      expect(lib.isLowerCase('Z')).toBe(false);
-    });
+  test("should throw an error for non-array input", () => {
+    const numbers = "not an array";
+    expect(() => findMaxNumber(numbers)).toThrowError(
+      "Input data must be a non-empty array of numbers."
+    );
+  });
+});
 
-    it('should return false for non-alphabetic characters', () => {
-      expect(lib.isLowerCase('1')).toBe(false);
-      expect(lib.isLowerCase('*')).toBe(false);
-      expect(lib.isLowerCase(' ')).toBe(false);
-    });
+
+
+describe("concatenateStrings", () => {
+  test("should concatenate an array of strings into one string", () => {
+    const strings = ["Hello", " ", "World"];
+    const result = concatenateStrings(strings);
+    expect(result).toBe("Hello World");
+  });
+
+  test("should throw concatenate a and b", () => {
+    const strings = ["a", "b"];
+    expect(concatenateStrings(strings)).toBe("ab");
+  });
+
+  test("should throw an error for non-array input", () => {
+    const strings = ["hi", " ", "man"];
+    expect(concatenateStrings(strings)).toBe("hi man");
+  });
+});
+
+describe("splitString", () => {
+  test("should split a string according to the divider", () => {
+    const str = "Hello,World";
+    const divider = ",";
+    const result = splitString(str, divider);
+    expect(result).toEqual(["Hello", "World"]);
+  });
+
+  test("should throw an error for non-string input", () => {
+    const str = 123;
+    const divider = ",";
+    expect(() => splitString(str, divider)).toThrowError(
+      "Input data must be strings."
+    );
+  });
+
+  test("should throw an error if divider is not a string", () => {
+    const str = "Hello,World";
+    const divider = 123;
+    expect(() => splitString(str, divider)).toThrowError(
+      "Input data must be strings."
+    );
+  });
+});
+
+describe("extractVowels", () => {
+  test("should return an array of vowels from a string", () => {
+    const str = "Hello World";
+    const result = extractVowels(str);
+    expect(result).toEqual(["e", "o", "o"]);
+  });
+
+  test("should return an empty array for a string without vowels", () => {
+    const str = "Rhythm";
+    const result = extractVowels(str);
+    expect(result).toEqual([]);
+  });
+
+  test("should throw an error for non-string input", () => {
+    const str = 123;
+    expect(() => extractVowels(str)).toThrowError("Input data must be a string.");
+  });
+});
+
+describe("containsSubstring", () => {
+  test("should return true if a string contains a substring", () => {
+    const str = "Hello World";
+    const subStr = "World";
+    const result = containsSubstring(str, subStr);
+    expect(result).toBe(true);
+  });
+
+  test("should return false if a string does not contain a substring", () => {
+    const str = "Hello World";
+    const subStr = "Universe";
+    const result = containsSubstring(str, subStr);
+    expect(result).toBe(false);
+  });
+
+  test("should throw an error for non-string input", () => {
+    const str = 123;
+    const subStr = "World";
+    expect(() => containsSubstring(str, subStr)).toThrowError(
+      "Input data must be strings."
+    );
+  });
+
+  test("should throw an error if substring is not a string", () => {
+    const str = "Hello World";
+    const subStr = 123;
+    expect(() => containsSubstring(str, subStr)).toThrowError(
+      "Input data must be strings."
+    );
+  });
+});
+
+describe("isCharLowerCase", () => {
+  test("should return true if a character is in lower case", () => {
+    const char = "a";
+    const result = isCharLowerCase(char);
+    expect(result).toBe(true);
+  });
+
+  test("should return false if a character is not in lower case", () => {
+    const char = "A";
+    const result = isCharLowerCase(char);
+    expect(result).toBe(false);
+  });
+
+  test("should throw an error for a non-string or multi-character input", () => {
+    const char1 = 123;
+    const char2 = "ab";
+    expect(() => isCharLowerCase(char1)).toThrowError(
+      "Input data must be a single character string."
+    );
+    expect(() => isCharLowerCase(char2)).toThrowError(
+      "Input data must be a single character string."
+    );
   });
 });

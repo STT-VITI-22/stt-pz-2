@@ -1,194 +1,147 @@
-/**
- * This function must subtraction two numbers and return result of subtraction
- * @param a {number|string}
- * @param b {number|string}
- * @returns {number}
- */
-function subtraction(a, b) {
-  return Number(a) - Number(b)
+function calculateSubtraction(a, b) {
+  return a - b;
 }
 
-/**
- * This function must division two numbers and return result according to all arithmetic rules
- * @param a {number|string}
- * @param b {number|string}
- * @returns {number}
- */
-function division(a, b) {
+function calculateDivision(a, b) {
   if (b === 0) {
-    return NaN;
+    throw new Error("Ділення на нуль не можливе");
   }
-  return Number(a) / Number(b);
+  return a / b;
 }
 
-/**
- * This function return result of multiplication two numbers according to all arithmetic rules
- * @param a {number|string}
- * @param b {number|string}
- * @returns {number}
- */
-function multiplication(a, b) {
-  if (b === 0) {
-    return NaN;
+function calculateMultiplication(a, b) {
+  return a * b;
+}
+
+function calculatePercentage(value, percent) {
+  const numericValue = parseFloat(value);
+  const numericPercent = parseFloat(percent);
+
+  if (isNaN(numericValue) || isNaN(numericPercent)) {
+    throw new Error(
+      "Вхідні дані мають бути числовими або строковими, які представляють числа."
+    );
   }
-  return Number(a) * Number(b)
-}
 
-/**
- * This function calculate percent from number according to all arithmetic rules
- * @param value {number|string}
- * @param percent {number|string}
- * @returns {number}
- */
-function percentage(value, percent) {
-  return (Number(value) * Number(percent)) / 100;
-}
+  const result = (numericPercent / 100) * numericValue;
 
-/**
- * This function return whole part of number
- * @param number {number|string}
- * @returns {number}
- */
-function getWholeNumberPart(number) {
-  return Math.floor(Number(number));
-}
-
-/**
- * This function get array of natural number and return array of even number
- * @param numbers {number[]}
- * @returns {number[]}
- */
-function getEvenNumbers(numbers) {
-  var evenNumbers = [];
-  for (var i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 2 === 0) {
-      evenNumbers.push(numbers[i]);
-    }
-  }
-  return evenNumbers;
-}
-
-/**
- * This function get get Max number from array
- * @param numbers {number[]}
- * @returns {number}
- */
-function getMaxNumber(numbers) {
-  var minNumber = numbers[0];
-  var maxNumber = numbers[0];
-  for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] < minNumber) {
-      minNumber = numbers[i];
-    }
-    if (numbers[i] > maxNumber) {
-      maxNumber = numbers[i];
-    }
-  }
-  return { min: minNumber, max: maxNumber };
-}
-
-/**
- * This function return object with min and  max number from array
- * @param numbers {number[]}
- * @returns {{min: number, max: number}}
- */
-function getMinAndMaxNumbers(numbers) {
-  var minNumber = numbers[0];
-  var maxNumber = numbers[0];
-  for (let i = 1; i < numbers.length; i++) {
-    if (numbers[i] < minNumber) {
-      minNumber = numbers[i];
-    }
-    if (numbers[i] > maxNumber) {
-      maxNumber = numbers[i];
-    }
-  }
-  return { min: minNumber, max: maxNumber };
-}
-
-/**
- * This function calculate arithmetic means from array of numbers
- * @param numbers {number[]}
- * @returns {number}
- */
-function arithmeticMeans(numbers) {
-  var sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  var mean = sum / numbers.length;
-  return mean;
-}
-
-/**
- * This function return array of vowerls form string
- * @param str {string}
- * @returns {string[]}
- */
-function getVowels(str) {
-  var vowels = ['a', 'e', 'i', 'o', 'u'];
-  var result = [];
-  for (let i = 0; i < str.length; i++) {
-    if (vowels.includes(str[i].toLowerCase())) {
-      result.push(str[i]);
-    }
-  }
   return result;
 }
 
-/**
- * This function get array of string and concat them into one string
- * @param str {string[]}
- * @returns {string}
- */
-function cancatString() {
-  return str.join('')
+function getWholePart(number) {
+  const numericValue = parseFloat(number);
+
+  if (isNaN(numericValue)) {
+    throw new Error(
+      "Вхідні дані мають бути числовими або строковими, які представляють числа."
+    );
+  }
+
+  const result = Math.floor(numericValue);
+
+  return result;
 }
 
-/**
- * This function split string according to divider
- * @param str {string}
- * @param divider {string}
- * @returns {string[]}
- */
+function filterEvenNumbers(numbers) {
+  if (!Array.isArray(numbers)) {
+    throw new Error("Вхідні дані мають бути масивом натуральних чисел.");
+  }
+
+  const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+  return evenNumbers;
+}
+
+function findMaxNumber(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Вхідні дані мають бути не пустим масивом чисел.");
+  }
+
+  const maxNumber = Math.max(...numbers);
+
+  return maxNumber;
+}
+
+function findMinMaxNumbers(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Вхідні дані мають бути не пустим масивом чисел.");
+  }
+
+  const minNumber = Math.min(...numbers);
+  const maxNumber = Math.max(...numbers);
+
+  return { min: minNumber, max: maxNumber };
+}
+
+function calculateArithmeticMean(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error("Вхідні дані мають бути не пустим масивом чисел.");
+  }
+
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  const mean = sum / numbers.length;
+
+  return mean;
+}
+
+function extractVowels(str) {
+  if (typeof str !== "string") {
+    throw new Error("Вхідні дані мають бути строковими.");
+  }
+
+  const vowels = str.toLowerCase().match(/[aeiou]/g) || [];
+
+  return vowels;
+}
+
+function concatenateStrings(str) {
+  return str.join("");
+}
 
 function splitString(str, divider) {
-  return str.split(divider);
+  if (typeof str !== "string" || typeof divider !== "string") {
+    throw new Error("Вхідні дані мають бути строковими.");
+  }
+
+  const result = str.split(divider);
+
+  return result;
 }
 
-/**
- * This function return true if string contains substring
- * @param str {string}
- * @param subStr {string}
- * @returns {boolean}
- */
-function hasSubString(str, subStr) {
-  return str.includes(subStr);
+function containsSubstring(str, subStr) {
+  if (typeof str !== "string" || typeof subStr !== "string") {
+    throw new Error("Вхідні дані мають бути строковими.");
+  }
+
+  const result = str.includes(subStr);
+
+  return result;
 }
 
-/**
- * This function return true if char is in lower case
- * @param char {string}
- * @returns {boolean}
- */
-function isLowerCase(char) {
-  return char === char.toLowerCase() && /[a-z]/.test(char);
+function isCharLowerCase(char) {
+  if (typeof char !== "string" || char.length !== 1) {
+    throw new Error("Вхідні дані мають бути одним строковим символом.");
+  }
+
+  const result = char === char.toLowerCase();
+
+  return result;
 }
 
 module.exports = {
-  sum,
-  subtraction,
-  division,
-  multiplication,
-  percentage,
-  getWholeNumberPart,
-  getEvenNumbers,
-  getMaxNumber,
-  getMinAndMaxNumbers,
-  arithmeticMeans,
-  getVowels,
-  cancatString,
+  calculatePercentage,
+  findMinMaxNumbers,
+  containsSubstring,
+  calculateDivision,
+  calculateArithmeticMean,
+  calculateMultiplication,
+  calculateSubtraction,
+  findMaxNumber,
+  concatenateStrings,
+  getWholePart,
+  isCharLowerCase,
+  extractVowels,
+  filterEvenNumbers,
   splitString,
-  hasSubString,
-  isLowerCase
-}
+};
+
