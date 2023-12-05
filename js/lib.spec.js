@@ -146,8 +146,8 @@ describe('Test suite for testing lib.js', () => {
 
   describe('cancatString function', () => {
     it('should concatenate an array of strings', () => {
-      expect(lib.cancatString(['Hello', 'World'])).toEqual('HelloWorld');
-      expect(lib.cancatString(['a', 'b', 'c'])).toEqual('abc');
+      expect(lib.cancatString(['first', 'second'])).toEqual('firstsecond');
+      expect(lib.cancatString(['apple', 'banana', 'cherry'])).toEqual('applebananacherry');
     });
     it('should return an empty string for an empty array', () => {
       expect(lib.cancatString([])).toEqual('');
