@@ -159,28 +159,40 @@ describe('Test suite for testing lib.js', () => {
 
   describe('splitString function', () => {
     it('should split the string using the divider', () => {
-      expect(lib.splitString('hello world', ' ')).toEqual(['hello', 'world']);
-      expect(lib.splitString('apple|banana|cherry', '|')).toEqual(['apple', 'banana', 'cherry']);
+      expect(lib.splitString('sunshine_rain', '_')).toEqual(['sunshine', 'rain']);
+      expect(lib.splitString('apple&banana&cherry', '&')).toEqual(['apple', 'banana', 'cherry']);
     });
     it('should return an array with one element if no divider is found', () => {
-      expect(lib.splitString('hello world', '-')).toEqual(['hello world']);
+      expect(lib.splitString('sunshine rain', '-')).toEqual(['sunshine rain']);
     });
     it('should throw an error for non-string inputs', () => {
       expect(() => lib.splitString(123, '-')).toThrow('Invalid input');
+    });
+    it('splits the string into individual characters if the divider is an empty string', () => {
+      expect(lib.splitString('abc', '')).toEqual(['a', 'b', 'c']);
+    });
+    it('handles consecutive dividers correctly', () => {
+      expect(lib.splitString('one--two', '-')).toEqual(['one', '', 'two']);
     });
   });
 
   describe('hasSubString function', () => {
     it('should return true if the string contains the substring', () => {
-      expect(lib.hasSubString('hello world', 'world')).toBe(true);
-      expect(lib.hasSubString('hello', 'hello')).toBe(true);
+      expect(lib.hasSubString('starlight night', 'night')).toBe(true);
+      expect(lib.hasSubString('morning', 'morning')).toBe(true);
     });
     it('should return false if the string does not contain the substring', () => {
-      expect(lib.hasSubString('hello world', 'bye')).toBe(false);
+      expect(lib.hasSubString('starlight night', 'day')).toBe(false);
     });
     it('should throw an error for non-string inputs', () => {
-      expect(() => lib.hasSubString(123, 'world')).toThrow('Invalid input');
+      expect(() => lib.hasSubString(123, 'night')).toThrow('Invalid input');
     });
+    it('returns true for an empty substring', () => {
+      expect(lib.hasSubString('any string', '')).toBe(true);
+    });
+    it('is case-sensitive', () => {
+      expect(lib.hasSubString('CaseSensitive', 'casesensitive')).toBe(false);
+    })
   });
 
   describe('isLowerCase function', () => {
