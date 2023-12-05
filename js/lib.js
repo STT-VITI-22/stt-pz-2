@@ -4,8 +4,18 @@
  * @param b {number|string}
  * @returns {number}
  */
+function sum(a, b) {
+  return Number(a) + Number(b)
+}
+
+/**
+ * This function must subtraction two numbers and return result of subtraction
+ * @param a {number|string}
+ * @param b {number|string}
+ * @returns {number}
+ */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b)
 }
 
 /**
@@ -15,7 +25,7 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  return Number(a) / Number(b)
 }
 
 /**
@@ -25,7 +35,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return Number(a) * Number(b)
 }
 
 /**
@@ -35,7 +45,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return Number(value) * Number(percent) / 100
 }
 
 /**
@@ -44,7 +54,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.floor(Number(number))
 }
 
 /**
@@ -53,7 +63,10 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  const evenNumbers = numbers.filter(x => x % 2 === 0);
+
+return evenNumbers;
+
 }
 
 /**
@@ -62,7 +75,7 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(numbers)
 }
 
 /**
@@ -71,7 +84,8 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  
+return Math.max(numbers), Math.min(numbers)
 }
 
 /**
@@ -80,7 +94,13 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  const totalCount = numbers.length;
+let sum = 0;
+const average = sum / totalCount;
+for (let i = 0; i < totalCount; i++) {
+  sum += numbers[i];
+}
+return average;
 }
 
 /**
@@ -89,7 +109,14 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
+  var result = [];
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i].toLowerCase())) {
+      result.push(str[i]);
+    }
+  }
+  return result;
 }
 
 /**
@@ -97,8 +124,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  return str.join('')
 }
 
 /**
@@ -109,7 +136,8 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  let arr = str.split(divider);
+	return arr;
 }
 
 /**
@@ -119,7 +147,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +156,12 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  if(char == char.toLowerCase()){
+    return true;
+  }
+  if(char == char.toUpperCase()){
+    return false;
+  }
 }
 
 module.exports = {
