@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/STT-VITI-22/stt-pz-1.git"
   },
-  "author": "Andrii Zadvornyi",
+  "author": "Viktor Nevmerzhitskiy",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/STT-VITI-22/stt-pz-1/issues"
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/STT-VITI-22/stt-pz-1#readme",
   "devDependencies": {
     "jest": "^29.0.3"
+  },
+  "dependencies": {
+    "mocha": "^10.3.0"
   }
 }
