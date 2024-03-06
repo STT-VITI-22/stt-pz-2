@@ -14,7 +14,7 @@ const {subtraction,
   isLowerCase} = require('./lib');
 
 describe('Test suite for testing lib.js', () => {
-  describe('subtraction function', () => {
+  describe('Test for subtraction function', () => {
     it('should subtract two numbers correctly', () => {
       expect(subtraction(5, 3)).toBe(2);
       expect(subtraction(10, -3)).toBe(13);
