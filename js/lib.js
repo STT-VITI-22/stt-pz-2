@@ -132,7 +132,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  return char === char.toLowerCase();
+  return char >= 'a' && char <= 'z';
 }
 
 module.exports = {
