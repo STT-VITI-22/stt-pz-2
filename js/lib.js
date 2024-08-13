@@ -5,7 +5,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b);
 }
 
 /**
@@ -15,7 +15,11 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if(Number(a) === 0 || Number(b) === 0) {
+    return 0;
+  } else {
+    return Number(a) / Number(b);
+  }
 }
 
 /**
@@ -25,7 +29,11 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  if(Number(a) === 0 || Number(b) === 0) {
+    return 0;
+  } else {
+    return Number(a) * Number(b);
+  }
 }
 
 /**
@@ -35,7 +43,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return Math.round(Number(percent) / 100) * Number(value);
 }
 
 /**
@@ -44,95 +52,97 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(Number(number));
 }
 
 /**
- * This function get array of natural number and return array of even number
+ * This function receives an array of natural numbers and returns an array of even numbers
  * @param numbers {number[]}
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(number => number % 2 === 0);
 }
 
 /**
- * This function get get Max number from array
+ * This function gets the maximum number from an array
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers);
 }
 
 /**
- * This function return object with min and  max number from array
+ * This function returns an object with the minimum and maximum numbers from an array
  * @param numbers {number[]}
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers)
+  };
 }
 
 /**
- * This function calculate arithmetic means from array of numbers
+ * This function calculates the arithmetic mean from an array of numbers
  * @param numbers {number[]}
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  return numbers.reduce((a, b) => a + b, 0) / numbers.length;
 }
 
 /**
- * This function return array of vowerls form string
+ * This function returns an array of vowels from a string
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  return str.match(/[aeiou]/gi) || [];
 }
 
 /**
- * This function get array of string and concat them into one string
+ * This function concatenates an array of strings into one string
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  return str.join('');
 }
 
 /**
- * This function split string according to divider
+ * This function splits a string according to the divider
  * @param str {string}
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  console.log("asdasda");
+  return str.split(divider);
 }
 
 /**
- * This function return true if string contains substring
+ * This function returns true if the string contains the substring
  * @param str {string}
  * @param subStr {string}
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
- * This function return true if char is in lower case
+ * This function returns true if the character is in lower case
  * @param char {string}
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase();
 }
 
 module.exports = {
-  sum,
   subtraction,
   division,
   multiplication,
