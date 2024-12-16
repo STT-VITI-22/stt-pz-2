@@ -1,138 +1,111 @@
 /**
- * This function must subtraction two numbers and return result of subtraction
- * @param a {number|string}
- * @param b {number|string}
+ * Subtracts two numbers and returns the result
+ * @param {number|string} a 
+ * @param {number|string} b 
  * @returns {number}
  */
-function subtraction(a, b) {
-  // Write your code here
-}
+const subtraction = (a, b) => Number(a) - Number(b);
 
 /**
- * This function must division two numbers and return result according to all arithmetic rules
- * @param a {number|string}
- * @param b {number|string}
+ * Divides two numbers and handles division by zero
+ * @param {number|string} a 
+ * @param {number|string} b 
  * @returns {number}
  */
-function division(a, b) {
-  // Write your code here
-}
+const division = (a, b) => (Number(a) === 0 || Number(b) === 0) ? 0 : Number(a) / Number(b);
 
 /**
- * This function return result of multiplication two numbers according to all arithmetic rules
- * @param a {number|string}
- * @param b {number|string}
+ * Multiplies two numbers and handles multiplication by zero
+ * @param {number|string} a 
+ * @param {number|string} b 
  * @returns {number}
  */
-function multiplication(a, b) {
-  // Write your code here
-}
+const multiplication = (a, b) => (Number(a) === 0 || Number(b) === 0) ? 0 : Number(a) * Number(b);
 
 /**
- * This function calculate percent from number according to all arithmetic rules
- * @param value {number|string}
- * @param percent {number|string}
+ * Calculates a percentage of a value
+ * @param {number|string} value 
+ * @param {number|string} percent 
  * @returns {number}
  */
-function percentage(value, percent) {
-  // Write your code here
-}
+const percentage = (value, percent) => (Number(percent) / 100) * Number(value);
 
 /**
- * This function return whole part of number
- * @param number {number|string}
+ * Returns the whole part of a number
+ * @param {number|string} number 
  * @returns {number}
  */
-function getWholeNumberPart(number) {
-  // Write your code here
-}
+const getWholeNumberPart = (number) => Math.trunc(Number(number));
 
 /**
- * This function get array of natural number and return array of even number
- * @param numbers {number[]}
+ * Filters even numbers from an array
+ * @param {number[]} numbers 
  * @returns {number[]}
  */
-function getEvenNumbers(numbers) {
-  // Write your code here
-}
+const getEvenNumbers = (numbers) => numbers.filter((number) => number % 2 === 0);
 
 /**
- * This function get get Max number from array
- * @param numbers {number[]}
+ * Returns the maximum number in an array
+ * @param {number[]} numbers 
  * @returns {number}
  */
-function getMaxNumber(numbers) {
-  // Write your code here
-}
+const getMaxNumber = (numbers) => Math.max(...numbers);
 
 /**
- * This function return object with min and  max number from array
- * @param numbers {number[]}
+ * Returns an object with the minimum and maximum numbers in an array
+ * @param {number[]} numbers 
  * @returns {{min: number, max: number}}
  */
-function getMinAndMaxNumbers(numbers) {
-  // Write your code here
-}
+const getMinAndMaxNumbers = (numbers) => ({
+  min: Math.min(...numbers),
+  max: Math.max(...numbers)
+});
 
 /**
- * This function calculate arithmetic means from array of numbers
- * @param numbers {number[]}
+ * Calculates the arithmetic mean of an array
+ * @param {number[]} numbers 
  * @returns {number}
  */
-function arithmeticMeans(numbers) {
-  // Write your code here
-}
+const arithmeticMeans = (numbers) => numbers.reduce((a, b) => a + b, 0) / numbers.length;
 
 /**
- * This function return array of vowerls form string
- * @param str {string}
+ * Extracts vowels from a string
+ * @param {string} str 
  * @returns {string[]}
  */
-function getVowels(str) {
-  // Write your code here
-}
+const getVowels = (str) => str.match(/[aeiou]/gi) || [];
 
 /**
- * This function get array of string and concat them into one string
- * @param str {string[]}
+ * Concatenates an array of strings into one string
+ * @param {string[]} str 
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
-}
+const cancatString = (str) => str.join('');
 
 /**
- * This function split string according to divider
- * @param str {string}
- * @param divider {string}
+ * Splits a string by a divider
+ * @param {string} str 
+ * @param {string} divider 
  * @returns {string[]}
  */
-
-function splitString(str, divider) {
-  // Write your code here
-}
+const splitString = (str, divider) => str.split(divider);
 
 /**
- * This function return true if string contains substring
- * @param str {string}
- * @param subStr {string}
+ * Checks if a string contains a substring
+ * @param {string} str 
+ * @param {string} subStr 
  * @returns {boolean}
  */
-function hasSubString(str, subStr) {
-  // Write your code here
-}
+const hasSubString = (str, subStr) => str.includes(subStr);
 
 /**
- * This function return true if char is in lower case
- * @param char {string}
+ * Checks if a character is in lowercase
+ * @param {string} char 
  * @returns {boolean}
  */
-function isLowerCase(char) {
-  // Write your code here
-}
+const isLowerCase = (char) => char === char.toLowerCase();
 
 module.exports = {
-  sum,
   subtraction,
   division,
   multiplication,
@@ -147,4 +120,4 @@ module.exports = {
   splitString,
   hasSubString,
   isLowerCase
-}
+};
