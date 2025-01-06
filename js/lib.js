@@ -5,7 +5,17 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b);
+}
+
+/**
+ * This function must sum two numbers and return result of addition
+ * @param a {number|string}
+ * @param b {number|string}
+ * @returns {number}
+ */
+function sum(a, b) {
+  return Number(a) + Number(b);
 }
 
 /**
@@ -15,7 +25,8 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (Number(b) === 0) throw new Error("Division by zero is not allowed.");
+  return Number(a) / Number(b);
 }
 
 /**
@@ -25,7 +36,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return Number(a) * Number(b);
 }
 
 /**
@@ -35,7 +46,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (Number(value) * Number(percent)) / 100;
 }
 
 /**
@@ -44,7 +55,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(Number(number));
 }
 
 /**
@@ -53,7 +64,7 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
@@ -62,16 +73,19 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers);
 }
 
 /**
- * This function return object with min and  max number from array
+ * This function return object with min and max number from array
  * @param numbers {number[]}
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers)
+  };
 }
 
 /**
@@ -80,25 +94,27 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (numbers.length === 0) return 0;
+  return numbers.reduce((sum, num) => sum + num, 0) / numbers.length;
 }
 
 /**
- * This function return array of vowerls form string
+ * This function return array of vowels from string
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = "aeiouAEIOU";
+  return Array.from(str).filter(char => vowels.includes(char));
 }
 
 /**
  * This function get array of string and concat them into one string
- * @param str {string[]}
+ * @param strings {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(strings) {
+  return strings.join("");
 }
 
 /**
@@ -107,9 +123,8 @@ function cancatString() {
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +134,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +143,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
@@ -147,4 +162,4 @@ module.exports = {
   splitString,
   hasSubString,
   isLowerCase
-}
+};
