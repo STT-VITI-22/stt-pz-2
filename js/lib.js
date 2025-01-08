@@ -5,18 +5,25 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b);
 }
 
+function division(a, b) {
+  if (Number(b) === 0) {
+    throw new Error("Division by zero is not allowed.");
+  }
+  return Number(a) / Number(b);
+}
 /**
- * This function must division two numbers and return result according to all arithmetic rules
+ * This function adds two numbers and returns the result.
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
-function division(a, b) {
-  // Write your code here
+function sum(a, b) {
+  return Number(a) + Number(b);
 }
+
 
 /**
  * This function return result of multiplication two numbers according to all arithmetic rules
@@ -25,8 +32,9 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return Number(a) * Number(b);
 }
+
 
 /**
  * This function calculate percent from number according to all arithmetic rules
@@ -35,8 +43,9 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (Number(value) * Number(percent)) / 100;
 }
+
 
 /**
  * This function return whole part of number
@@ -44,8 +53,9 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.floor(Number(number));
 }
+
 
 /**
  * This function get array of natural number and return array of even number
@@ -53,8 +63,9 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(num => num % 2 === 0);
 }
+
 
 /**
  * This function get get Max number from array
@@ -62,8 +73,9 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers);
 }
+
 
 /**
  * This function return object with min and  max number from array
@@ -71,8 +83,12 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers),
+  };
 }
+
 
 /**
  * This function calculate arithmetic means from array of numbers
@@ -80,8 +96,11 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (numbers.length === 0) return 0;
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum / numbers.length;
 }
+
 
 /**
  * This function return array of vowerls form string
@@ -89,17 +108,20 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = str.match(/[aeiou]/gi);
+  return vowels ? vowels : [];
 }
+
 
 /**
  * This function get array of string and concat them into one string
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(strings) {
+  return strings.join('');
 }
+
 
 /**
  * This function split string according to divider
@@ -109,8 +131,9 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
+
 
 /**
  * This function return true if string contains substring
@@ -119,8 +142,9 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
+
 
 /**
  * This function return true if char is in lower case
@@ -128,8 +152,9 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
+
 
 module.exports = {
   sum,
@@ -146,5 +171,6 @@ module.exports = {
   cancatString,
   splitString,
   hasSubString,
-  isLowerCase
-}
+  isLowerCase,
+};
+
