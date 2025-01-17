@@ -5,7 +5,11 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  if (isNaN(Number(a)) || isNaN(Number(b))) {
+    throw new Error("Given numbers must be valid")
+  }
+
+  return a - b
 }
 
 /**
@@ -15,7 +19,15 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (isNaN(Number(a)) || isNaN(Number(b))) {
+    throw new Error("Given numbers must be valid")
+  }
+
+  if (b === 0) {
+    throw new Error("It's impossible to divide by zero")
+  }
+
+  return a / b
 }
 
 /**
@@ -25,7 +37,11 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  if (isNaN(Number(a)) || isNaN(Number(b))) {
+    throw new Error("Given numbers must be valid")
+  }
+
+  return a * b
 }
 
 /**
@@ -35,7 +51,15 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  if (isNaN(Number(value)) || isNaN(Number(percent))) {
+    throw new Error("Given numbers must be valid")
+  }
+
+  if (percent === 0) {
+    throw new Error("Given percent can not be zero")
+  }
+
+  return Math.round(percent / value * 100)
 }
 
 /**
@@ -44,7 +68,11 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  if (isNaN(Number(number))) {
+    throw new Error("Given number must be valid")
+  }
+
+  return Number.parseInt(number)
 }
 
 /**
@@ -53,7 +81,15 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error("Input must be an array");
+  }
+
+  if (!numbers.every(num => typeof num === 'number' && Number.isFinite(num))) {
+    throw new Error("All elements in the array must be numbers");
+  }
+
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
@@ -62,7 +98,15 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error("Input must be an array");
+  }
+
+  if (!numbers.every(num => typeof num === 'number' && Number.isFinite(num))) {
+    throw new Error("All elements in the array must be numbers");
+  }
+
+  return Math.max(...numbers);
 }
 
 /**
@@ -71,7 +115,18 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error("Input must be an array");
+  }
+
+  if (!numbers.every(num => typeof num === 'number' && Number.isFinite(num))) {
+    throw new Error("All elements in the array must be numbers");
+  }
+
+  const min = Math.min(...numbers);
+  const max = Math.max(...numbers);
+
+  return {min, max}
 }
 
 /**
@@ -80,7 +135,17 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) {
+    throw new Error("Input must be an array");
+  }
+
+  if (!numbers.every(num => typeof num === 'number' && Number.isFinite(num))) {
+    throw new Error("All elements in the array must be numbers");
+  }
+
+  const mean = numbers.reduce((sum, num) => sum + num, 0) / numbers.length;
+
+  return Number.isInteger(mean) ? mean : parseFloat(mean.toFixed(10));
 }
 
 /**
@@ -89,7 +154,11 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  if (typeof str !== "string") {
+    throw new Error("Input must be a string");
+  }
+
+  return str.match(/[aeiou]/gi) || [];
 }
 
 /**
@@ -97,8 +166,16 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function concatString(str) {
+  if (!Array.isArray(str)) {
+    throw new Error("Input must be an array");
+  }
+
+  if (!str.every(item => typeof item === "string")) {
+    throw new Error("All elements in the array must be strings");
+  }
+
+  return str.join("");
 }
 
 /**
@@ -109,7 +186,11 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  if (typeof str !== "string" || typeof divider !== "string") {
+    throw new Error("The inputs must be string");
+  }
+
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +200,11 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  if (typeof str !== "string" || typeof subStr !== "string") {
+    throw new Error("The inputs must be string");
+  }
+
+  return str.includes(subStr);
 }
 
 /**
@@ -128,11 +213,14 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  if (typeof char !== "string" || char.length !== 1) {
+    throw new TypeError("Input must be a single character string");
+  }
+
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
-  sum,
   subtraction,
   division,
   multiplication,
@@ -143,7 +231,7 @@ module.exports = {
   getMinAndMaxNumbers,
   arithmeticMeans,
   getVowels,
-  cancatString,
+  concatString,
   splitString,
   hasSubString,
   isLowerCase
