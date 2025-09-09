@@ -5,7 +5,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+    return a - b;
 }
 
 /**
@@ -15,7 +15,7 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+    return a / b;
 }
 
 /**
@@ -25,7 +25,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+    return a * b;
 }
 
 /**
@@ -35,7 +35,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+    return percent / value * 100;
 }
 
 /**
@@ -44,7 +44,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+    return Math.trunc(number);
 }
 
 /**
@@ -53,16 +53,22 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+    let resultArray = [];
+    numbers.forEach(number => {
+        if (number % 2 === 0) {
+            resultArray.push(number);
+        }
+    });
+    return resultArray;
 }
 
 /**
- * This function get get Max number from array
+ * This function get Max number from array
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+    return Math.max(...numbers);
 }
 
 /**
@@ -71,7 +77,7 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+    return {min: Math.min(...numbers), max: Math.max(...numbers)}
 }
 
 /**
@@ -80,16 +86,28 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+    let result = 0
+    let length = numbers.length;
+    for (let i = 0; i < length; i++) {
+        result += numbers[i];
+    }
+    return result/length;
 }
 
 /**
- * This function return array of vowerls form string
+ * This function return array of vowels form string
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+    let vowels = ["a","e","o","y","u"];
+    let result = [];
+    str.split("").forEach(char => {
+        if (vowels.includes(char)){
+            result.push(char);
+        }
+    });
+    return result;
 }
 
 /**
@@ -97,8 +115,12 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function concatString(str) {
+    let result = "";
+    str.forEach((string) => {
+        result += string;
+    })
+    return result;
 }
 
 /**
@@ -109,7 +131,7 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+    return str.split(divider);
 }
 
 /**
@@ -119,7 +141,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+    return str.includes(subStr);
 }
 
 /**
@@ -128,23 +150,22 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+    return char.toLowerCase() === char;
 }
 
 module.exports = {
-  sum,
-  subtraction,
-  division,
-  multiplication,
-  percentage,
-  getWholeNumberPart,
-  getEvenNumbers,
-  getMaxNumber,
-  getMinAndMaxNumbers,
-  arithmeticMeans,
-  getVowels,
-  cancatString,
-  splitString,
-  hasSubString,
-  isLowerCase
+    subtraction,
+    division,
+    multiplication,
+    percentage,
+    getWholeNumberPart,
+    getEvenNumbers,
+    getMaxNumber,
+    getMinAndMaxNumbers,
+    arithmeticMeans,
+    getVowels,
+    concatString,
+    splitString,
+    hasSubString,
+    isLowerCase
 }
