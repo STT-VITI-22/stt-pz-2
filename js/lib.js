@@ -1,11 +1,21 @@
 /**
+ * This function must sum two numbers and return result of sum
+ * @param a {number|string}
+ * @param b {number|string}
+ * @returns {number}
+ */
+function sum(a,b){
+  return a + b;
+}
+
+/**
  * This function must subtraction two numbers and return result of subtraction
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return a - b;
 }
 
 /**
@@ -15,7 +25,7 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  return a / b;
 }
 
 /**
@@ -25,7 +35,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return a * b;
 }
 
 /**
@@ -35,7 +45,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (value / percent) * 100;
 }
 
 /**
@@ -44,7 +54,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.floor(number);
 }
 
 /**
@@ -53,7 +63,7 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+   return numbers.filter(numbers => numbers % 2 === 0);
 }
 
 /**
@@ -62,7 +72,8 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+    return Math.max(...numbers);
+
 }
 
 /**
@@ -71,8 +82,12 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers),
+  };
 }
+
 
 /**
  * This function calculate arithmetic means from array of numbers
@@ -80,55 +95,63 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    return NaN; // або 0, якщо хочеш повертати 0 для порожнього масиву
+  }
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum / numbers.length;
 }
 
 /**
- * This function return array of vowerls form string
- * @param str {string}
+ * This function returns array of vowels from string
+ * @param {string} str
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = 'aeiouAEIOU';
+  return Array.from(str).filter(char => vowels.includes(char));
 }
 
+
 /**
- * This function get array of string and concat them into one string
- * @param str {string[]}
+ * This function gets array of strings and concats them into one string
+ * @param {string[]} str
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  return str.join('');
 }
 
+
 /**
- * This function split string according to divider
- * @param str {string}
- * @param divider {string}
+ * This function splits string according to divider
+ * @param {string} str
+ * @param {string} divider
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
+
 /**
- * This function return true if string contains substring
- * @param str {string}
- * @param subStr {string}
+ * This function returns true if string contains substring
+ * @param {string} str
+ * @param {string} subStr
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
+
 /**
- * This function return true if char is in lower case
- * @param char {string}
+ * This function returns true if char is in lower case
+ * @param {string} char
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
