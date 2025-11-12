@@ -1,3 +1,4 @@
+
 const { 
   subtraction, division, multiplication, percentage, getWholeNumberPart,
   getEvenNumbers, getMaxNumber, getMinAndMaxNumbers, arithmeticMeans,
