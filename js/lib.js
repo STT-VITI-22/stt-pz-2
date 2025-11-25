@@ -160,6 +160,22 @@ function sum(a, b) {
   return Number(a) + Number(b);
 }
 
+/**
+ * This function must remove some element for array of string by name
+ * @param list {string[]}
+ * @param name {string}
+ * @returns {string[]}
+ */
+function removeByName(list, name) {
+  let result = [...list]
+  let index = result.indexOf(name);
+  if (index !== -1) {
+    result.splice(index, 1);
+  }
+
+  return result;
+}
+
 module.exports = {
   sum,
   subtraction,
@@ -175,5 +191,6 @@ module.exports = {
   cancatString,
   splitString,
   hasSubString,
-  isLowerCase
+  isLowerCase,
+  removeByName
 }

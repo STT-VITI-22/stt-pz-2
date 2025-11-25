@@ -258,6 +258,61 @@ describe("Test suite for testing lib.js", () => {
     });
   });
 
+ describe("Test should remove by name", () => {
+  it("should delete the name of object", () => {
+    const initialList = ['Apple', 'Banana', 'Cherry', 'Blueberry'];
+    const nameToRemove = 'Banana';
+    const expectedList = ['Apple', 'Cherry', 'Blueberry'];
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+    expect(initialList).toEqual(['Apple', 'Banana', 'Cherry', 'Blueberry']); 
+  });
+  it("should return empty array", () => {
+    const initialList = ['Cat'];
+    const nameToRemove = 'Cat';
+    const expectedList = [];
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+  });
+    it("should delete first muss object, if there are many same objects", () => {
+    const initialList = ['One', 'Two', 'One', 'Three'];
+    const nameToRemove = 'One';
+    const expectedList = ['Two', 'One', 'Three']; 
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+  });
+    it("should delete name im the end of list", () => {
+    const initialList = ['First', 'Middle', 'Last'];
+    const nameToRemove = 'Last';
+    const expectedList = ['First', 'Middle'];
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+  });
+  it("should return no changed array, if object is not present", () => {
+    const initialList = ['Red', 'Green', 'Blue'];
+    const nameToRemove = 'Yellow';
+    const expectedList = ['Red', 'Green', 'Blue']; 
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+    expect(initialList).toEqual(['Red', 'Green', 'Blue']);
+  });
+  it("should return empty array if there are no array", () => {
+    const initialList = [];
+    const nameToRemove = 'smth';
+    const expectedList = [];
+    const result = lib.removeByName(initialList, nameToRemove);
+    expect(result).toEqual(expectedList);
+  });
+});
+
+
+
+
+
+
+
+
+
   describe("Test suite for testing sum function", () => {
     it("should return the sum of two numbers", () => {
       expect(lib.sum(5, 1)).toEqual(6);
@@ -286,5 +341,6 @@ describe("Test suite for testing lib.js", () => {
     it("should correctly handle the addition of Infinity and -Infinity", () => {
       expect(lib.sum(Infinity, -Infinity)).toEqual(NaN);
     });
+    
   });
 });
