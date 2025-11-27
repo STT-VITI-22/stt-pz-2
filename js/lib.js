@@ -1,138 +1,178 @@
+// js/lib.js
+
 /**
- * This function must subtraction two numbers and return result of subtraction
+ * Ця функція віднімає два числа та повертає результат віднімання
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  const numA = Number(a);
+  const numB = Number(b);
+  if (isNaN(numA) || isNaN(numB)) return NaN;
+  return numA - numB;
 }
 
 /**
- * This function must division two numbers and return result according to all arithmetic rules
+ * Ця функція ділить два числа та повертає результат згідно з усіма арифметичними правилами
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  const numA = Number(a);
+  const numB = Number(b);
+  if (isNaN(numA) || isNaN(numB)) return NaN;
+  if (numB === 0) return Infinity; // або можна throw new Error("Ділення на нуль")
+  return numA / numB;
 }
 
 /**
- * This function return result of multiplication two numbers according to all arithmetic rules
+ * Ця функція повертає результат множення двох чисел згідно з усіма арифметичними правилами
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  const numA = Number(a);
+  const numB = Number(b);
+  if (isNaN(numA) || isNaN(numB)) return NaN;
+  return numA * numB;
 }
 
 /**
- * This function calculate percent from number according to all arithmetic rules
+ * Ця функція обчислює відсоток від числа згідно з усіма арифметичними правилами
  * @param value {number|string}
  * @param percent {number|string}
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  const numValue = Number(value);
+  const numPercent = Number(percent);
+  if (isNaN(numValue) || isNaN(numPercent)) return NaN;
+  return (numValue * numPercent) / 100;
 }
 
 /**
- * This function return whole part of number
+ * Ця функція повертає цілу частину числа
  * @param number {number|string}
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  const num = Number(number);
+  if (isNaN(num)) return NaN;
+  return Math.trunc(num);
 }
 
 /**
- * This function get array of natural number and return array of even number
+ * Ця функція приймає масив натуральних чисел і повертає масив парних чисел
  * @param numbers {number[]}
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers)) return [];
+  return numbers.filter(num => typeof num === 'number' && num % 2 === 0);
 }
 
 /**
- * This function get get Max number from array
+ * Ця функція повертає максимальне число з масиву
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) return null;
+  const validNums = numbers.filter(n => typeof n === 'number');
+  if (validNums.length === 0) return null;  // ← ДОБАВЬ ЭТУ СТРОКУ
+  return Math.max(...validNums);
 }
-
 /**
- * This function return object with min and  max number from array
+ * Ця функція повертає об'єкт з мінімальним та максимальним числом з масиву
  * @param numbers {number[]}
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    return { min: null, max: null };
+  }
+  const validNums = numbers.filter(n => typeof n === 'number');
+  if (validNums.length === 0) return { min: null, max: null };
+  return {
+    min: Math.min(...validNums),
+    max: Math.max(...validNums)
+  };
 }
 
 /**
- * This function calculate arithmetic means from array of numbers
+ * Ця функція обчислює середнє арифметичне з масиву чисел
  * @param numbers {number[]}
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (!Array.isArray(numbers) || numbers.length === 0) return null;
+  const validNums = numbers.filter(n => typeof n === 'number');
+  if (validNums.length === 0) return null;
+  return validNums.reduce((a, b) => a + b, 0) / validNums.length;
 }
 
 /**
- * This function return array of vowerls form string
+ * Ця функція повертає масив голосних літер зі строки
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  if (typeof str !== 'string') return [];
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  return str
+    .toLowerCase()
+    .split('')
+    .filter(char => vowels.includes(char));
 }
 
 /**
- * This function get array of string and concat them into one string
+ * Ця функція приймає масив рядків і об'єднує їх в один рядок
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  if (!Array.isArray(str)) return '';
+  return str.filter(s => typeof s === 'string').join('');
 }
 
 /**
- * This function split string according to divider
+ * Ця функція розбиває рядок за роздільником
  * @param str {string}
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  if (typeof str !== 'string' || typeof divider !== 'string') return [];
+  return str.split(divider);
 }
 
 /**
- * This function return true if string contains substring
+ * Ця функція повертає true, якщо рядок містить підрядок
  * @param str {string}
  * @param subStr {string}
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  if (typeof str !== 'string' || typeof subStr !== 'string') return false;
+  return str.includes(subStr);
 }
 
 /**
- * This function return true if char is in lower case
+ * Ця функція повертає true, якщо символ у нижньому регістрі
  * @param char {string}
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  if (typeof char !== 'string' || char.length !== 1) return false;
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
+// Експорт
 module.exports = {
-  sum,
+  sum: (a, b) => Number(a) + Number(b),
   subtraction,
   division,
   multiplication,
@@ -147,4 +187,4 @@ module.exports = {
   splitString,
   hasSubString,
   isLowerCase
-}
+};
