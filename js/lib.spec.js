@@ -53,5 +53,19 @@ describe('Test suite for testing lib.js', () => {
     });
 
   });
+    describe('Test for fibonacci', () => {
+    it('fibonacci of 7 should be 13', () => {
+      expect(lib.fibonacci(7)).toEqual(13);
+    });
+    it('fibonacci of 0 should be 0', () => {
+      expect(lib.fibonacci(0)).toEqual(0);
+    });   
+    it('fibonacci of 1 should be 1', () => {
+      expect(lib.fibonacci(1)).toEqual(1);
+    });
+    it('fibonacci of 10 should be 55', () => {
+      expect(lib.fibonacci(10)).toEqual(55);
+    });
+  });
 
 });
