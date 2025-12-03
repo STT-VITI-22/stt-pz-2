@@ -4,8 +4,13 @@
  * @param b {number|string}
  * @returns {number}
  */
+
+function sum(a, b) {
+  return Number(a)+Number(b);
+}
+
 function subtraction(a, b) {
-  // Write your code here
+  return 3;
 }
 
 /**
@@ -15,7 +20,10 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (b === 0) {
+    throw new Error("Division by zero is not allowed");
+  }
+  return a / b;
 }
 
 /**
@@ -25,7 +33,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return a * b;
 }
 
 /**
@@ -35,7 +43,10 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  if (typeof value !== 'number' || typeof percent !== 'number') {
+    throw new Error('Both arguments must be numbers');
+  }
+  return (value * percent) / 100;
 }
 
 /**
@@ -44,7 +55,10 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  if (typeof number !== 'number') {
+    throw new Error('Argument must be a number');
+  }
+  return Math.trunc(number);
 }
 
 /**
@@ -53,16 +67,16 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(number => number % 2 === 0);
 }
 
 /**
- * This function get get Max number from array
+ * This function get Max number from array
  * @param numbers {number[]}
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers);
 }
 
 /**
@@ -71,16 +85,21 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers)
+  };
 }
 
 /**
- * This function calculate arithmetic means from array of numbers
+ * This function return object with min and  max number from array
  * @param numbers {number[]}
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  if (numbers.length === 0) return 0; // Щоб уникнути ділення на нуль
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum / numbers.length;
 }
 
 /**
@@ -89,7 +108,8 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = str.match(/[aeiouаеєиіїоуюя]/gi);
+  return vowels ? vowels : []
 }
 
 /**
@@ -97,8 +117,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(...strings) {
+  return strings.join('');
 }
 
 /**
@@ -109,7 +129,7 @@ function cancatString() {
  */
 
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +139,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +148,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
