@@ -5,6 +5,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
+  return Number(a) - Number(b);
   // Write your code here
 }
 
@@ -16,6 +17,7 @@ function subtraction(a, b) {
  */
 function division(a, b) {
   // Write your code here
+  return Number(a) / Number(b);
 }
 
 /**
@@ -26,6 +28,7 @@ function division(a, b) {
  */
 function multiplication(a, b) {
   // Write your code here
+  return Number(a) * Number(b);
 }
 
 /**
@@ -36,6 +39,7 @@ function multiplication(a, b) {
  */
 function percentage(value, percent) {
   // Write your code here
+  return (Number(value) * Number(percent)) / 100;
 }
 
 /**
@@ -45,6 +49,7 @@ function percentage(value, percent) {
  */
 function getWholeNumberPart(number) {
   // Write your code here
+  return Math.trunc(Number(number));  
 }
 
 /**
@@ -54,6 +59,7 @@ function getWholeNumberPart(number) {
  */
 function getEvenNumbers(numbers) {
   // Write your code here
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
@@ -63,6 +69,7 @@ function getEvenNumbers(numbers) {
  */
 function getMaxNumber(numbers) {
   // Write your code here
+  return Math.max(...numbers);
 }
 
 /**
@@ -72,6 +79,10 @@ function getMaxNumber(numbers) {
  */
 function getMinAndMaxNumbers(numbers) {
   // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers)
+  };
 }
 
 /**
@@ -81,6 +92,8 @@ function getMinAndMaxNumbers(numbers) {
  */
 function arithmeticMeans(numbers) {
   // Write your code here
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum / numbers.length;
 }
 
 /**
@@ -90,6 +103,8 @@ function arithmeticMeans(numbers) {
  */
 function getVowels(str) {
   // Write your code here
+  const vowels = 'aeiouAEIOU';
+  return str.split('').filter(char => vowels.includes(char));
 }
 
 /**
@@ -97,8 +112,9 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
+function cancatString(str) {
   // Write your code here
+  return str.join('');
 }
 
 /**
@@ -110,6 +126,7 @@ function cancatString() {
 
 function splitString(str, divider) {
   // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -120,6 +137,7 @@ function splitString(str, divider) {
  */
 function hasSubString(str, subStr) {
   // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -129,9 +147,16 @@ function hasSubString(str, subStr) {
  */
 function isLowerCase(char) {
   // Write your code here
+  return char === char.toLowerCase();
 }
 
-module.exports = {
+function sum(a, b) {
+  return Number(a) +  Number(b);
+  
+}
+
+
+module.exports = { 
   sum,
   subtraction,
   division,
