@@ -1,13 +1,22 @@
 const lib = require('./lib');
 
 describe('Test suite for testing lib.js', () => {
+  describe('Test suite for sum function', () => {
+    it('should return sum of two numbers', () => {
+      expect(lib.sum(5, 1)).toEqual(6);
+    });
+
+    it('check diff type of parament like sting', () => {
+      expect(lib.sum('5', '1')).toEqual(6);
+    });
+
+  });
+
   describe('Test suite for testing subtraction function', () => {
     it('should return subtraction of two numbers', () => {
       expect(lib.subtraction(5, 1)).toEqual(3);
     });
-    it('should return sum of two numbers', () => {
-      expect(lib.sum(5, 1)).toEqual(6);
-    });
+
     it('should return division of two numbers', () => {
       expect(lib.division(5, 1)).toEqual(5);
     });
