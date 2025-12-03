@@ -6,10 +6,25 @@ describe('Test suite for testing lib.js', () => {
       expect(lib.sum(5, 1)).toEqual(6);
     });
 
-    it('check diff type of parament like sting', () => {
+    it('check diff type of parament like string', () => {
       expect(lib.sum('5', '1')).toEqual(6);
     });
 
+    it('повинна повернути суму, коли одне число нуль', () => {
+      expect(lib.sum(0, 7)).toEqual(7);
+    });
+
+    it('повинна повернути суму двох від’ємних чисел', () => {
+      expect(lib.sum(-3, -4)).toEqual(-7);
+    });
+
+    it('повинна повернути суму додатнього та від’ємного числа', () => {
+      expect(lib.sum(10, -4)).toEqual(6);
+    });
+
+    it('повинна повернути суму двох десяткових чисел', () => {
+      expect(lib.sum(2.5, 3.1)).toEqual(5.6); 
+    });
   });
 
   describe('Test suite for testing subtraction function', () => {
@@ -27,10 +42,10 @@ describe('Test suite for testing lib.js', () => {
       expect(lib.percentage(200, 10)).toEqual(20);
     });
     it('should return whole part of number', () => {
-      expect(lib.getWholeNumberPart(12,75)).toEqual(12);
+      expect(lib.getWholeNumberPart(12, 75)).toEqual(12);
     });
     it('should get array of natural number and return array of even number', () => {
-      expect(lib.getEvenNumbers([12,75,34,13])).toEqual([12,34]);
+      expect(lib.getEvenNumbers([12, 75, 34, 13])).toEqual([12, 34]);
     });
     it('should get Max number from array', () => {
       expect(lib.getMaxNumber([12, 75, 34, 13])).toEqual(75);
@@ -38,7 +53,7 @@ describe('Test suite for testing lib.js', () => {
     it('should return object with min and  max number from array', () => {
       expect(lib.getMinAndMaxNumbers([12, 75, 34, 13]));
     });
-     it('should return object with min and  max number from array', () => {
+    it('should return object with min and  max number from array', () => {
       expect(lib.arithmeticMeans([12, 75, 34, 13]));
     });
     it('should return array of vowerls form string', () => {
