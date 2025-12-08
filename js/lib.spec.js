@@ -67,11 +67,18 @@ describe('lib.js functions', () => {
     expect(lib.isLowerCase("A")).toBe(false);
   });
 
-  //  findElmentInArrayByIndex
   test('findElmentInArrayByIndex works', () => {
     const arr = [10, 20, 30, 40];
-    expect(lib.findElmentInArrayByIndex(arr, 0)).toBe(10 );       // індекс 0 → 10
-    expect(lib.findElmentInArrayByIndex(arr, 2)).toBe(30);       // індекс 2 → 30
-    expect(lib.findElmentInArrayByIndex(arr, 5)).toBeUndefined(); //
+    expect(lib.findElmentInArrayByIndex(arr, 0)).toBe(10);
+    expect(lib.findElmentInArrayByIndex(arr, 2)).toBe(30);
+    expect(lib.findElmentInArrayByIndex(arr, 5)).toBeUndefined();
+  });
+
+  // 🔥 Новий тест для factorial
+  test('factorial works', () => {
+    expect(lib.factorial(0)).toBe(1);   // 0! = 1
+    expect(lib.factorial(1)).toBe(1);   // 1! = 1
+    expect(lib.factorial(5)).toBe(120); // 5! = 120
+    expect(() => lib.factorial(-3)).toThrow("Factorial is not defined for negative numbers");
   });
 });
