@@ -171,3 +171,23 @@ describe('Test suite for lib.js', () => {
     });
   });
 });
+// 16. factorial
+describe('factorial', () => {
+  it('should calculate factorial correctly', () => {
+    expect(lib.factorial(0)).toBe(1);
+    expect(lib.factorial(1)).toBe(1);
+    expect(lib.factorial(5)).toBe(120);//
+    expect(lib.factorial(7)).toBe(5040);
+  });
+
+  it('should handle string input', () => {
+    expect(lib.factorial('6')).toBe(720);
+  });
+
+  it('should return NaN for invalid input', () => {
+    expect(lib.factorial(-1)).toBeNaN();
+    expect(lib.factorial(3.5)).toBeNaN();
+    expect(lib.factorial('hello')).toBeNaN();
+    expect(lib.factorial(null)).toBeNaN();
+  });
+});
