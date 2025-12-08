@@ -74,11 +74,25 @@ describe('lib.js functions', () => {
     expect(lib.findElmentInArrayByIndex(arr, 5)).toBeUndefined();
   });
 
-  // 🔥 Новий тест для factorial
-  test('factorial works', () => {
-    expect(lib.factorial(0)).toBe(1);   // 0! = 1
-    expect(lib.factorial(1)).toBe(1);   // 1! = 1
-    expect(lib.factorial(5)).toBe(120); // 5! = 120
+  // 🔥 Тести до factorial (функції ще немає в lib.js)
+  test('factorial works with basic cases', () => {
+    expect(lib.factorial(0)).toBe(1);
+    expect(lib.factorial(1)).toBe(1);
+    expect(lib.factorial(5)).toBe(120);
+  });
+
+  test('factorial throws error for negative numbers', () => {
     expect(() => lib.factorial(-3)).toThrow("Factorial is not defined for negative numbers");
+  });
+
+  // 🔹 Параметризований тест (всі дані в одну строчку)
+  test.each([
+    [0, 1],
+    [1, 1],
+    [3, 6],
+    [4, 24],
+    [5, 120]
+  ])('factorial(%i) = %i', (input, expected) => {
+    expect(lib.factorial(input)).toBe(expected);
   });
 });
