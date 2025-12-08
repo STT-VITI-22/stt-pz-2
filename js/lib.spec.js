@@ -66,4 +66,12 @@ describe('lib.js functions', () => {
     expect(lib.isLowerCase("a")).toBe(true);
     expect(lib.isLowerCase("A")).toBe(false);
   });
+
+  //  findElmentInArrayByIndex
+  test('findElmentInArrayByIndex works', () => {
+    const arr = [10, 20, 30, 40];
+    expect(lib.findElmentInArrayByIndex(arr, 0)).toBe(10 );       // індекс 0 → 10
+    expect(lib.findElmentInArrayByIndex(arr, 2)).toBe(30);       // індекс 2 → 30
+    expect(lib.findElmentInArrayByIndex(arr, 5)).toBeUndefined(); //
+  });
 });

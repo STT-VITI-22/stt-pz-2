@@ -107,6 +107,11 @@ function hasSubString(str, subStr) {
  */
 function isLowerCase(char) {
   return char === char.toLowerCase() && char !== char.toUpperCase();
+
+}
+
+function findElmentInArrayByIndex(array, index) {
+  return array[index]
 }
 
 module.exports = {
@@ -124,5 +129,7 @@ module.exports = {
   cancatString,
   splitString,
   hasSubString,
-  isLowerCase
+  isLowerCase,
+  findElmentInArrayByIndex
+
 };
