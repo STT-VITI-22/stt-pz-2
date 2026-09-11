@@ -31,7 +31,7 @@ npm run test
 ### Directory Structure
 
 ```
-├── stt-pz-1
+├── stt-pz-2
 │   ├── js
 │   │   ├── lib.js
 │   │   ├── lib.spec.js
