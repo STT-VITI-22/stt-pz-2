@@ -1,4 +1,4 @@
-# Practical lesson stt-pz-1 
+# Practical lesson stt-pz-2
 
 > In this lesson is introduction to auto testing in javascript. Using Jest
 > Jest is a delightful JavaScript Testing Framework with a focus on simplicity
