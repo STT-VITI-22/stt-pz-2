@@ -1,3 +1,7 @@
+function sum(a, b) {
+  return Number(a) + Number(b);
+}
+
 /**
  * This function must subtraction two numbers and return result of subtraction
  * @param a {number|string}
@@ -5,7 +9,7 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b);
 }
 
 /**
@@ -15,7 +19,11 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  if (Number(b) === 0) {
+    throw new Error('Division by zero');
+  }
+
+  return Number(a) / Number(b);
 }
 
 /**
@@ -25,7 +33,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return Number(a) * Number(b);
 }
 
 /**
@@ -35,7 +43,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return Number(value) * Number(percent) / 100;
 }
 
 /**
@@ -44,7 +52,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(Number(number));
 }
 
 /**
@@ -53,7 +61,13 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(number => number % 2 === 0);
+}
+
+function assertNotEmpty(numbers) {
+  if (numbers.length === 0) {
+    throw new Error('Array must not be empty');
+  }
 }
 
 /**
@@ -62,7 +76,9 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+
+  return numbers.reduce((max, number) => (number > max ? number : max));
 }
 
 /**
@@ -71,7 +87,12 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+
+  return {
+    min: numbers.reduce((min, number) => (number < min ? number : min)),
+    max: getMaxNumber(numbers)
+  };
 }
 
 /**
@@ -80,8 +101,12 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+
+  return numbers.reduce((total, number) => total + number, 0) / numbers.length;
 }
+
+const VOWELS = 'aeiouаеєиіїоуюя';
 
 /**
  * This function return array of vowerls form string
@@ -89,16 +114,16 @@ function arithmeticMeans(numbers) {
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  return [...str].filter(char => VOWELS.includes(char.toLowerCase()));
 }
 
 /**
  * This function get array of string and concat them into one string
- * @param str {string[]}
+ * @param strings {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(strings) {
+  return strings.join('');
 }
 
 /**
@@ -107,9 +132,8 @@ function cancatString() {
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +143,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +152,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
