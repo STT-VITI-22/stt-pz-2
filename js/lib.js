@@ -1,11 +1,44 @@
 /**
+ * Converts value to a number. Throws if value is not a valid number
+ * @param value {number|string}
+ * @returns {number}
+ */
+function toNumber(value) {
+  const number = typeof value === 'string' && value.trim() === '' ? NaN : Number(value);
+  if (Number.isNaN(number)) {
+    throw new TypeError('Invalid number');
+  }
+  return number;
+}
+
+/**
+ * Throws if array is empty
+ * @param numbers {number[]}
+ */
+function assertNotEmpty(numbers) {
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    throw new Error('Array must not be empty');
+  }
+}
+
+/**
+ * This function must sum two numbers and return result of sum
+ * @param a {number|string}
+ * @param b {number|string}
+ * @returns {number}
+ */
+function sum(a, b) {
+  return toNumber(a) + toNumber(b);
+}
+
+/**
  * This function must subtraction two numbers and return result of subtraction
  * @param a {number|string}
  * @param b {number|string}
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return toNumber(a) - toNumber(b);
 }
 
 /**
@@ -15,7 +48,11 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  const divisor = toNumber(b);
+  if (divisor === 0) {
+    throw new Error('Division by zero');
+  }
+  return toNumber(a) / divisor;
 }
 
 /**
@@ -25,7 +62,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return toNumber(a) * toNumber(b);
 }
 
 /**
@@ -35,7 +72,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return (toNumber(value) * toNumber(percent)) / 100;
 }
 
 /**
@@ -44,7 +81,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(toNumber(number));
 }
 
 /**
@@ -53,7 +90,7 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter((number) => number % 2 === 0);
 }
 
 /**
@@ -62,7 +99,8 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+  return Math.max(...numbers);
 }
 
 /**
@@ -71,7 +109,8 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+  return { min: Math.min(...numbers), max: Math.max(...numbers) };
 }
 
 /**
@@ -80,16 +119,17 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  assertNotEmpty(numbers);
+  return numbers.reduce((total, number) => total + number, 0) / numbers.length;
 }
 
 /**
- * This function return array of vowerls form string
+ * This function return array of vowerls form string (latin and cyrillic)
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  return str.match(/[aeiouаеєиіїоуюяыэё]/gi) || [];
 }
 
 /**
@@ -97,8 +137,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  return str.join('');
 }
 
 /**
@@ -107,9 +147,8 @@ function cancatString() {
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +158,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +167,7 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
 }
 
 module.exports = {
