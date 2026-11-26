@@ -5,7 +5,11 @@
  * @returns {number}
  */
 function subtraction(a, b) {
-  // Write your code here
+  return Number(a) - Number(b);
+}
+
+function sum(a, b) {
+  return Number(a) + Number(b);
 }
 
 /**
@@ -15,7 +19,7 @@ function subtraction(a, b) {
  * @returns {number}
  */
 function division(a, b) {
-  // Write your code here
+  return Number(a) / Number(b);
 }
 
 /**
@@ -25,7 +29,7 @@ function division(a, b) {
  * @returns {number}
  */
 function multiplication(a, b) {
-  // Write your code here
+  return Number(a) * Number(b);
 }
 
 /**
@@ -35,7 +39,7 @@ function multiplication(a, b) {
  * @returns {number}
  */
 function percentage(value, percent) {
-  // Write your code here
+  return Number(value) * (Number(percent) / 100);
 }
 
 /**
@@ -44,7 +48,7 @@ function percentage(value, percent) {
  * @returns {number}
  */
 function getWholeNumberPart(number) {
-  // Write your code here
+  return Math.trunc(Number(number));
 }
 
 /**
@@ -53,7 +57,7 @@ function getWholeNumberPart(number) {
  * @returns {number[]}
  */
 function getEvenNumbers(numbers) {
-  // Write your code here
+  return numbers.filter(num => num % 2 === 0);
 }
 
 /**
@@ -62,7 +66,7 @@ function getEvenNumbers(numbers) {
  * @returns {number}
  */
 function getMaxNumber(numbers) {
-  // Write your code here
+  return Math.max(...numbers);
 }
 
 /**
@@ -71,7 +75,10 @@ function getMaxNumber(numbers) {
  * @returns {{min: number, max: number}}
  */
 function getMinAndMaxNumbers(numbers) {
-  // Write your code here
+  return {
+    min: Math.min(...numbers),
+    max: Math.max(...numbers)
+  };
 }
 
 /**
@@ -80,16 +87,20 @@ function getMinAndMaxNumbers(numbers) {
  * @returns {number}
  */
 function arithmeticMeans(numbers) {
-  // Write your code here
+  return numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
 }
 
 /**
- * This function return array of vowerls form string
+ * This function return array of vowels from string
  * @param str {string}
  * @returns {string[]}
  */
 function getVowels(str) {
-  // Write your code here
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'а', 'е', 'є', 'и', 'і', 'ї', 'о', 'у', 'ю', 'я'];
+  return str
+    .toLowerCase()
+    .split('')
+    .filter(ch => vowels.includes(ch));
 }
 
 /**
@@ -97,8 +108,8 @@ function getVowels(str) {
  * @param str {string[]}
  * @returns {string}
  */
-function cancatString() {
-  // Write your code here
+function cancatString(str) {
+  return str.join('');
 }
 
 /**
@@ -107,9 +118,8 @@ function cancatString() {
  * @param divider {string}
  * @returns {string[]}
  */
-
 function splitString(str, divider) {
-  // Write your code here
+  return str.split(divider);
 }
 
 /**
@@ -119,7 +129,7 @@ function splitString(str, divider) {
  * @returns {boolean}
  */
 function hasSubString(str, subStr) {
-  // Write your code here
+  return str.includes(subStr);
 }
 
 /**
@@ -128,7 +138,21 @@ function hasSubString(str, subStr) {
  * @returns {boolean}
  */
 function isLowerCase(char) {
-  // Write your code here
+  return char === char.toLowerCase() && char !== char.toUpperCase();
+}
+function factorial(n) {
+  const num = Number(n);
+  if (num < 0 || !Number.isInteger(num)) {
+    return NaN;
+  }
+  if (num === 0 || num === 1) {
+    return 1;
+  }
+  let result = 1;
+  for (let i = 2; i <= num; i++) {
+    result *= i;
+  }
+  return result;
 }
 
 module.exports = {
@@ -146,5 +170,6 @@ module.exports = {
   cancatString,
   splitString,
   hasSubString,
-  isLowerCase
+  isLowerCase,
+  factorial
 }
