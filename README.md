@@ -1,19 +1,20 @@
 # Practical lesson stt-pz-2
 
-> In this lesson is introduction to auto testing in javascript. Using Jest
-> Jest is a delightful JavaScript Testing Framework with a focus on simplicity
+> In this lesson is introduction to auto testing in javascript using Behavior Driven Development (BDD).
+> Tests are written as Gherkin scenarios (`Given / When / Then`) and executed by Jest via [jest-cucumber](https://github.com/bencompton/jest-cucumber).
 
 
 ### What need to do:
 * Setting up the testing environment
-* Implement unit tests for lib.js functions according to Test Development Driven (TDD) concepts
-* Implement functions from libs.js
+* Describe the behavior of lib.js functions as BDD scenarios in Gherkin (`features/*.feature`)
+* Implement step definitions that bind scenarios to code (`js/lib.steps.js`)
+* Implement functions from lib.js
 
 ### Acceptance criteria 
-* Understand basic concepts of Test Development (TDD) in JavaScript
+* Understand basic concepts of Behavior Driven Development (BDD) in JavaScript
 * Setting up the testing environment
 * Build and run them
-* Code coverage must be mote than 90%
+* Code coverage must be more than 90%
 
 ### Getting started
 
@@ -23,18 +24,28 @@ Install npm packages
 npm install
 ```
 
-Run unit tests
+Run BDD scenarios (with coverage report, threshold is 90%)
 
 ```
 npm run test
+```
+
+Run in watch mode
+
+```
+npm run test:watch
 ```
 ### Directory Structure
 
 ```
 ├── stt-pz-2
+│   ├── features
+│   │   ├── arithmetic.feature
+│   │   ├── arrays.feature
+│   │   ├── strings.feature
 │   ├── js
 │   │   ├── lib.js
-│   │   ├── lib.spec.js
+│   │   ├── lib.steps.js
 │   ├── .editorconfig
 │   ├── .gitignore
 │   ├── jest.config.js
